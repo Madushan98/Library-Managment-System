@@ -1,4 +1,4 @@
-package Library.Database.Enums;
+package Enums;
 
 public enum SupportSqlDB {
   SQLITE,

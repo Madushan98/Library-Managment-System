@@ -1,6 +1,6 @@
 package Library.Entity;
 
-import Library.Utils.IdGenerator;
+import Utils.IdGenerator;
 
 public class Book {
 

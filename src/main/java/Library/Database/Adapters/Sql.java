@@ -3,7 +3,7 @@ package Library.Database.Adapters;
 import java.util.List;
 
 import Library.Database.Sqlite;
-import Library.Database.Enums.SupportSqlDB;
+import Enums.SupportSqlDB;
 import Library.Database.Interfaces.DataHandler;
 import Library.Database.Interfaces.SqlDatabase;
 import Library.Entity.Book;
