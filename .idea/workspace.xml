@@ -4,19 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef605e47-7683-443a-b7fc-c2d6da3b557e" name="Changes" comment="refactor project">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Enums/UIType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Library/Service/BookLibraryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Library/Service/LibraryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/LibraryCLI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/GUI/LibraryGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/UI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/UIFactory/UIFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utils/StringToDatetime.java" afterDir="false" />
+    <list default="true" id="ef605e47-7683-443a-b7fc-c2d6da3b557e" name="Changes" comment="UI Change">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/AddBookCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/BorrowBookCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/DisplayAllBooksCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/DisplayAvailableBooksCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/DisplayBorrowedBooksCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/DisplayMenuCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/DisplayOverdueBooksCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/ExitCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/RemoveBookCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/ReturnBookCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Interface/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LMS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/CLI/LibraryCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/LibraryCLI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +29,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -44,12 +53,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="UI.UIFactory" />
@@ -81,7 +95,8 @@
       <workItem from="1681997548953" duration="6493000" />
       <workItem from="1681997548953" duration="3394000" />
       <workItem from="1682033565011" duration="970000" />
-      <workItem from="1682077932549" duration="924000" />
+      <workItem from="1682077932549" duration="10326000" />
+      <workItem from="1682088519176" duration="5642000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1681973610002</created>
@@ -111,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682078407135</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="UI Change">
+      <created>1682079273211</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682079273211</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +156,7 @@
     <MESSAGE value="LMS Created" />
     <MESSAGE value="book init" />
     <MESSAGE value="refactor project" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor project" />
+    <MESSAGE value="UI Change" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI Change" />
   </component>
 </project>
