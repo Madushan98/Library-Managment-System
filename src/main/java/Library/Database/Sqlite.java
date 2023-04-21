@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import Library.Database.Interfaces.SqlDatabase;
 import Library.Entity.Book;
+import Library.Entity.BookRecord;
 
 public class Sqlite implements SqlDatabase {
 
@@ -55,8 +56,9 @@ public class Sqlite implements SqlDatabase {
             String sql = "CREATE TABLE IF NOT EXISTS RECORDS " +
                     "(ID        INTEGER PRIMARY KEY AUTOINCREMENT," +
                     " BOOK_ID   INT     NOT NULL, " +
-                    " USER_ID   TEXT     NOT NULL, " +
-                    " DATE      TEXT    NOT NULL)";
+                    " USER      TEXT    NOT NULL, " +
+                    " RETURNED  INT     DEFAULT 0, " +
+                    " DUE_DATE  TEXT    NOT NULL)";
 
             stmt.executeUpdate(sql);
             stmt.close();
@@ -100,30 +102,6 @@ public class Sqlite implements SqlDatabase {
         }
     }
 
-    /**
-     * Execute a query
-     * 
-     * @param sqlString The query to execute
-     * @return The result set
-     */
-    public ResultSet ExecuteQuery(String sqlString) {
-        if (conn == null) {
-            throw new RuntimeException("Connection is null");
-        }
-
-        try {
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sqlString);
-            stmt.close();
-
-            return rs;
-        } catch (Exception e) {
-            logger.severe(
-                    "Failed to execute query: " + sqlString + ". " + e.getMessage());
-        }
-        return null;
-    }
-
     public List<Book> ExecuteBookQuery(String sqlString) {
         if (conn == null) {
             throw new RuntimeException("Connection is null");
@@ -148,5 +126,32 @@ public class Sqlite implements SqlDatabase {
                     "Failed to execute query: " + sqlString + ". " + e.getMessage());
         }
         return books;
+    }
+
+    public List<BookRecord> ExecuteBookRecordQuery(String sqlString) {
+        if (conn == null) {
+            throw new RuntimeException("Connection is null");
+        }
+
+        List<BookRecord> records = new ArrayList<BookRecord>();
+
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlString);
+
+            while (rs.next()) {
+                records.add(new BookRecord(rs.getInt("ID"), rs.getInt("BOOK_ID"),
+                        rs.getString("USER"), rs.getInt("RETURNED") == 1,
+                        rs.getString("DUE_DATE")));
+            }
+
+            rs.close();
+            stmt.close();
+
+        } catch (Exception e) {
+            logger.severe(
+                    "Failed to execute query: " + sqlString + ". " + e.getMessage());
+        }
+        return records;
     }
 }
