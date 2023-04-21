@@ -2,23 +2,14 @@ package Library.Database.Adapters;
 
 import java.util.List;
 
-import Library.Database.Sqlite;
 import Enums.SupportSqlDB;
-import Library.Database.Interfaces.DataHandler;
-import Library.Database.Interfaces.SqlDatabase;
+import Library.Database.Interfaces.BookManager;
 import Library.Entity.Book;
 
-public class Sql implements DataHandler {
-  private SqlDatabase database;
+public class BookManageSqlAdapter extends BaseSqlInitiator implements BookManager {
 
-  public Sql(SupportSqlDB name) {
-    switch (name) {
-      case SQLITE:
-        database = Sqlite.getInstance();
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid database name");
-    }
+  public BookManageSqlAdapter(SupportSqlDB name) {
+    super(name);
   }
 
   public void CreateBook(Book book) {

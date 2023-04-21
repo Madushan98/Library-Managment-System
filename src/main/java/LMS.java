@@ -1,10 +1,7 @@
-import java.util.List;
-
 import Enums.UIType;
-import Library.Database.Adapters.Sql;
+import Library.Database.Adapters.BookManageSqlAdapter;
 import Enums.SupportSqlDB;
-import Library.Database.Interfaces.DataHandler;
-import Library.Entity.Book;
+import Library.Database.Interfaces.BookManager;
 import Library.Entity.BookFactory;
 import Library.Service.BookLibraryService;
 import Library.Service.LibraryService;
@@ -14,7 +11,7 @@ import UI.UIFactory.UIFactory;
 public class LMS {
 
     public static void main(String[] args) {
-        DataHandler dataHandler = new Sql(SupportSqlDB.SQLITE);
+        BookManager dataHandler = new BookManageSqlAdapter(SupportSqlDB.SQLITE);
 
         System.out.println("Create books");
 
