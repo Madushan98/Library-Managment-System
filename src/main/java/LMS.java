@@ -5,6 +5,7 @@ import Library.Database.Adapters.Sql;
 import Enums.SupportSqlDB;
 import Library.Database.Interfaces.DataHandler;
 import Library.Entity.Book;
+import Library.Entity.BookFactory;
 import Library.Service.BookLibraryService;
 import Library.Service.LibraryService;
 import UI.UI;
@@ -17,10 +18,10 @@ public class LMS {
 
         System.out.println("Create books");
 
-        dataHandler.CreateBook(new Book("The Lord of the Rings", "J.R.R. Tolkien"));
-        dataHandler.CreateBook(new Book("The Hobbit", "J.R.R. Tolkien"));
-        dataHandler.CreateBook(new Book("The Silmarillion", "J.R.R. Tolkien"));
-        dataHandler.CreateBook(new Book("The Fellowship of the Ring", "J.R.R. Tolkien"));
+        dataHandler.CreateBook(BookFactory.createBook("The Lord of the Rings", "J.R.R. Tolkien"));
+        dataHandler.CreateBook(BookFactory.createBook("The Hobbit", "J.R.R. Tolkien"));
+        dataHandler.CreateBook(BookFactory.createBook("The Silmarillion", "J.R.R. Tolkien"));
+        dataHandler.CreateBook(BookFactory.createBook("The Fellowship of the Ring", "J.R.R. Tolkien"));
 
         LibraryService bookLibraryService = new BookLibraryService(dataHandler);
 
