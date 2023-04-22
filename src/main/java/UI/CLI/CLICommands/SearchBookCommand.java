@@ -37,6 +37,6 @@ public class SearchBookCommand implements Command {
 
     @Override
     public String getDescription() {
-        return null;
+        return "Search Book By Title";
     }
 }

@@ -27,7 +27,9 @@ public class LibraryCLI implements UI {
         start();
     }
 
-    // adds all the available commands to the commands map
+    /**
+     * adds all the available commands to the commands map
+     */
     public void addCommand() {
         this.commands.put(1, new AddBookCommand(libraryService, scanner));
         this.commands.put(2, new RemoveBookCommand(libraryService, scanner));
@@ -42,11 +44,13 @@ public class LibraryCLI implements UI {
         this.commands.put(11, new ExitCommand());
     }
 
-    // starts the CLI
+    /**
+     * starts the CLI
+     */
     public void start() {
         System.out.println("\n-------------Welcome to the Library Management System.-----------\n");
 
-        Command command = commands.get(9);
+        Command command = commands.get(10);
         command.execute();
         while (true) {
             int choice = getChoice();
@@ -58,12 +62,12 @@ public class LibraryCLI implements UI {
             }
             System.out.println("");
 
-            // show the menu again
-            commands.get(9).execute();
         }
     }
 
-    // gets the user's choice
+    /**
+     * get user's input
+     */
     private int getChoice() {
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();
