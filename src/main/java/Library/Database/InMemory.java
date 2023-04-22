@@ -54,8 +54,9 @@ public class InMemory implements InMemoryDatabase {
     return books.stream().filter(book -> book.getTitle().contains(name)).toList();
   }
 
-  public void CreateBookRecord(BookRecord bookRecord) {
+  public int CreateBookRecord(BookRecord bookRecord) {
     bookRecords.add(bookRecord);
+    return bookRecords.size() - 1;
   }
 
   public BookRecord GetBookRecord(int id) {

@@ -20,7 +20,7 @@ public interface InMemoryDatabase {
 
   public List<Book> SearchByName(String name);
 
-  public void CreateBookRecord(BookRecord bookRecord);
+  public int CreateBookRecord(BookRecord bookRecord);
 
   public BookRecord GetBookRecord(int id);
 

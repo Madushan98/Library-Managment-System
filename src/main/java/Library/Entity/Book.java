@@ -1,6 +1,7 @@
 package Library.Entity;
 
-import Utils.IdGenerator;
+import Library.Database.Interfaces.BookManager;
+import Library.Database.Interfaces.RecordManager;
 
 public class Book {
 
@@ -9,6 +10,13 @@ public class Book {
     private String author;
     private boolean availability;
 
+    public Book(String title, String author) {
+        this.id = -1;
+        this.title = title;
+        this.author = author;
+        this.availability = true;
+    }
+
     public Book(int id, String title, String author, boolean availability) {
         this.id = id;
         this.title = title;
@@ -16,18 +24,47 @@ public class Book {
         this.availability = availability;
     }
 
-    public Book(String title, String author) {
-        this.id = IdGenerator.generateId();
-        this.title = title;
-        this.author = author;
-        this.availability = true;
+    public Book(int id, BookManager bookManager) {
+        Book book = bookManager.GetBook(id);
+
+        if (book == null) {
+            throw new RuntimeException("Book not found");
+        }
+
+        this.id = book.getId();
+        this.title = book.getTitle();
+        this.author = book.getAuthor();
+        this.availability = book.getAvailability();
     }
 
-    public Book(String title, String author, boolean availability) {
-        this.id = IdGenerator.generateId();
-        this.title = title;
-        this.author = author;
-        this.availability = availability;
+    public Book Delete(BookManager bookManager) {
+        bookManager.DeleteBook(id);
+        this.availability = false;
+        return this;
+    }
+
+    public Book Save(BookManager bookManager) {
+        if (this.id == -1) {
+            this.id = bookManager.CreateBook(this);
+            return this;
+        }
+
+        bookManager.UpdateBook(this);
+        return this;
+    }
+
+    public BookRecord BorrowBook(BookManager bookManager, RecordManager recordManager) {
+        if (!this.availability) {
+            System.out.println("Book is not available");
+            return null;
+        }
+
+        BookRecord bookRecord = new BookRecord(this.id, "user");
+        recordManager.CreateBookRecord(bookRecord);
+        this.availability = false;
+        this.Save(bookManager);
+
+        return bookRecord;
     }
 
     public int getId() {
