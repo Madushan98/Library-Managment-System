@@ -20,4 +20,6 @@ public interface LibraryService {
     List<Book> getBorrowedBooks();
 
     List<Book> getOverdueBooks();
+
+    List<Book> searchBook(String title);
 }

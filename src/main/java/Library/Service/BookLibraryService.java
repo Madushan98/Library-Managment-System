@@ -83,4 +83,9 @@ public class BookLibraryService implements LibraryService {
         return true;
     }
 
+    @Override
+    public List<Book> searchBook(String title) {
+        return bookManager.SearchByName(title);
+    }
+
 }
