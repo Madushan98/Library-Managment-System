@@ -1,4 +1,4 @@
-package Library.Database.Adapters;
+package Library.Database.Adapters.Sql;
 
 import Library.Database.Sqlite;
 import Library.Database.Enums.SupportSqlDB;
