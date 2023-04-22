@@ -11,7 +11,7 @@ public class BookManagerInMemoryAdapter extends BaseInMemoryInitiator implements
     super(name);
   }
 
-  public int CreateBook(Book book) {
+  public Book SaveBook(Book book) {
     return database.CreateBook(book);
   }
 
@@ -27,8 +27,8 @@ public class BookManagerInMemoryAdapter extends BaseInMemoryInitiator implements
     return database.GetAllAvailableBooks();
   }
 
-  public void UpdateBook(Book book) {
-    database.UpdateBook(book);
+  public Book UpdateBook(Book book) {
+    return database.UpdateBook(book);
   }
 
   public void DeleteBook(int id) {

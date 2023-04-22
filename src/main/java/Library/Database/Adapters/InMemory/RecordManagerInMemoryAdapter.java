@@ -11,7 +11,7 @@ public class RecordManagerInMemoryAdapter extends BaseInMemoryInitiator implemen
     super(name);
   }
 
-  public int CreateBookRecord(BookRecord record) {
+  public BookRecord CreateBookRecord(BookRecord record) {
     return database.CreateBookRecord(record);
   }
 
@@ -19,12 +19,24 @@ public class RecordManagerInMemoryAdapter extends BaseInMemoryInitiator implemen
     return database.GetBookRecord(id);
   }
 
+  public BookRecord GetLastBookRecordForBook(int bookId) {
+    return database.GetLastBookRecordForBook(bookId);
+  }
+
   public List<BookRecord> GetAllBookRecords() {
     return database.GetAllBookRecords();
   }
 
-  public void UpdateBookRecord(BookRecord record) {
-    database.UpdateBookRecord(record);
+  public List<BookRecord> GetBorrowedBooks() {
+    return database.GetBorrowedBooks();
+  }
+
+  public List<BookRecord> GetOverdueBooks() {
+    return database.GetOverdueBooks();
+  }
+
+  public BookRecord UpdateBookRecord(BookRecord record) {
+    return database.UpdateBookRecord(record);
   }
 
   public void DeleteBookRecord(int id) {

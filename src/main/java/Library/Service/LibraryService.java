@@ -10,19 +10,21 @@ public interface LibraryService {
 
     boolean addBook(String title, String author);
 
+    Book getBookById(int id);
+
     boolean removeBook(int id);
 
     List<Book> getAllBooks();
 
     Book borrowBook(int bookId, String user, LocalDate date);
 
+    Book returnBook(int bookId);
+
     List<Book> getAvailableBooks();
 
-    List<Book> getBorrowedBooks();
+    List<BookRecord> getBorrowedBooks();
 
     List<BookRecord> getOverdueBooks();
 
-    boolean returnBook(String title);
-
-    List<Book> searchBooks(String title);
+    List<Book> searchBook(String title);
 }
