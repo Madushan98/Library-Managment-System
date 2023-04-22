@@ -12,10 +12,12 @@ public class RecordManageSqlAdapter extends BaseSqlInitiator implements RecordMa
   }
 
   @Override
-  public int CreateBookRecord(BookRecord bookRecord) {
-    return database.ExecuteUpdate("INSERT INTO RECORDS (BOOK_ID, USER, DUE_DATE) VALUES (%d, '%s', '%s')"
+  public BookRecord CreateBookRecord(BookRecord bookRecord) {
+    int id = database.ExecuteUpdate("INSERT INTO RECORDS (BOOK_ID, USER, DUE_DATE) VALUES (%d, '%s', '%s')"
         .formatted(bookRecord.getBookId(), bookRecord.getUser(), bookRecord.getDueDate().toString()));
 
+    return new BookRecord(id, bookRecord.getBookId(), bookRecord.getUser(), bookRecord.isReturned(),
+        bookRecord.getDueDate().toString());
   }
 
   @Override
@@ -29,16 +31,37 @@ public class RecordManageSqlAdapter extends BaseSqlInitiator implements RecordMa
   }
 
   @Override
+  public List<BookRecord> GetBorrowedBooks() {
+    return database.ExecuteBookRecordQuery("SELECT * FROM RECORDS WHERE RETURNED = 0");
+  }
+
+  @Override
+  public List<BookRecord> GetOverdueBooks() {
+    return database.ExecuteBookRecordQuery("SELECT * FROM RECORDS WHERE RETURNED = 0 AND date(DUE_DATE) < NOW()");
+  }
+
+  @Override
   public BookRecord GetBookRecord(int id) {
     return database.ExecuteBookRecordQuery("SELECT * FROM RECORDS WHERE ID = %d".formatted(id)).get(0);
   }
 
   @Override
-  public void UpdateBookRecord(BookRecord bookRecord) {
-    database.ExecuteUpdate(
-        "UPDATE RECORDS SET BOOK_ID = %d, USER = '%s', DUE_DATE = '%s' WHERE ID = %d"
+  public BookRecord GetLastBookRecordForBook(int bookId) {
+    return database.ExecuteBookRecordQuery(
+        "SELECT * FROM RECORDS WHERE BOOK_ID = %d AND RETURNED = 0 ORDER BY CREATED_AT DESC LIMIT 1"
+            .formatted(bookId))
+        .get(0);
+  }
+
+  @Override
+  public BookRecord UpdateBookRecord(BookRecord bookRecord) {
+    int id = database.ExecuteUpdate(
+        "UPDATE RECORDS SET BOOK_ID = %d, USER = '%s', DUE_DATE = '%s', RETURNED = %d WHERE ID = %d"
             .formatted(bookRecord.getBookId(), bookRecord.getUser(),
-                bookRecord.getDueDate().toString(), bookRecord.getId()));
+                bookRecord.getDueDate().toString(), bookRecord.isReturned() ? 1 : 0, bookRecord.getId()));
+
+    return new BookRecord(id, bookRecord.getBookId(), bookRecord.getUser(), bookRecord.isReturned(),
+        bookRecord.getDueDate().toString());
   }
 
 }

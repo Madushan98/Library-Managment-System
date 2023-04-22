@@ -5,7 +5,7 @@ import java.util.List;
 import Library.Entity.Book;
 
 public interface BookManager {
-  public int CreateBook(Book book);
+  public Book SaveBook(Book book);
 
   public Book GetBook(int id);
 
@@ -13,7 +13,7 @@ public interface BookManager {
 
   public List<Book> GetAllAvailableBooks();
 
-  public void UpdateBook(Book book);
+  public Book UpdateBook(Book book);
 
   public void DeleteBook(int id);
 

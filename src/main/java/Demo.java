@@ -43,32 +43,29 @@ public class Demo {
     Book hp1 = new Book("Harry Potter and the Philosopher Stone", "J. K. Rowling");
     Book lp = new Book("The Little Prince", "Antoine de Saint-Exupéry");
     Book atwn = new Book("And Then There Were None", "Agatha Christie");
-    new Book("The Da Vinci Code", "Dan Brown").Save(bookManager);
-    new Book("The Alchemist", "Paulo Coelho").Save(bookManager);
-    new Book("Dream of the Red Chamber", "Cao Xueqin").Save(bookManager);
+    Book dvc = new Book("The Da Vinci Code", "Dan Brown");
+    Book ta = new Book("The Alchemist", "Paulo Coelho");
+    Book drc = new Book("Dream of the Red Chamber", "Cao Xueqin");
 
-    lotr = lotr.Save(bookManager);
-    hp1 = hp1.Save(bookManager);
-    lp = lp.Save(bookManager);
-    atwn = atwn.Save(bookManager);
+    bookManager.SaveBook(lotr);
+    bookManager.SaveBook(hp1);
+    bookManager.SaveBook(lp);
+    bookManager.SaveBook(atwn);
+    bookManager.SaveBook(dvc);
+    bookManager.SaveBook(ta);
+    bookManager.SaveBook(drc);
 
     PrintTopic("Getting All Books");
     PrintBookList(bookManager.GetAllBooks());
 
     PrintTopic("Removing Book with ID 1");
     bookManager.DeleteBook(1);
-    // or Book.Delete(bookManager);
-    PrintBookList(bookManager.GetAllBooks());
-
-    PrintTopic("Remove And Then There Were None");
-    atwn.Delete(bookManager);
     PrintBookList(bookManager.GetAllBooks());
 
     PrintTopic("Edit Book with ID 5");
     Book bookToBeEdit = bookManager.GetBook(5);
-    bookToBeEdit.setTitle("Harry Potter and the Sorcerer Stone"); // hp1.setTitle("Harry Potter and the Sorcerer Stone")
-                                                                  // also works!!
-    bookToBeEdit.Save(bookManager);
+    bookToBeEdit.setTitle("Harry Potter and the Sorcerer Stone");
+    bookToBeEdit = bookManager.UpdateBook(bookToBeEdit);
     PrintBookList(bookManager.GetAllBooks());
 
     PrintTopic("Searching for Books with Title containing \"Stone\"");
@@ -78,12 +75,26 @@ public class Demo {
     PrintBookList(bookManager.GetAllAvailableBooks());
 
     PrintTopic("Borrowing Book with ID 3");
-    Book bookToBeBorrowed = new Book(3, bookManager);
-    bookToBeBorrowed.BorrowBook(bookManager, recordManager);
+    Book bookToBeBorrowed = bookManager.GetBook(3);
+    BookRecord borrowRecord = new BookRecord(bookToBeBorrowed.getId(), "user");
+    borrowRecord = recordManager.CreateBookRecord(borrowRecord);
+    bookToBeBorrowed.setAvailability(false);
+    bookToBeBorrowed = bookManager.UpdateBook(bookToBeBorrowed);
     PrintBookList(bookManager.GetAllBooks());
 
     PrintTopic("Getting All Book Records");
     PrintRecordList(recordManager.GetAllBookRecords());
 
+    PrintTopic("Return Borrowed Book");
+    Book bookToBeReturned = bookManager.GetBook(3);
+    BookRecord returnRecord = recordManager.GetLastBookRecordForBook(bookToBeReturned.getId());
+    returnRecord.setReturned(true);
+    recordManager.UpdateBookRecord(returnRecord);
+    bookToBeReturned.setAvailability(true);
+    bookToBeReturned = bookManager.UpdateBook(bookToBeReturned);
+    PrintBookList(bookManager.GetAllBooks());
+
+    PrintTopic("Getting All Book Records");
+    PrintRecordList(recordManager.GetAllBookRecords());
   }
 }
