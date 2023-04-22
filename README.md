@@ -2,27 +2,86 @@
 
 ```mermaid
 classDiagram
-    note "From Duck till Zebra"
-    Animal <|-- Duck
-    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
-    Animal <|-- Fish
-    Animal <|-- Zebra
-    Animal : +int age
-    Animal : +String gender
-    Animal: +isMammal()
-    Animal: +mate()
-    class Duck{
-        +String beakColor
-        +swim()
-        +quack()
+    
+    LibraryCLI <|-- UI
+    LibraryGUI <|-- UI
+    UIFactory  ..> UI
+    LibraryCLI ..> Command
+    Command <|-- AddBookCommand
+    Command <|-- BorrowBookCommand
+    Command <|-- ReturnBookCommand
+    Command <|-- DisplayBooksCommand
+    
+    
+    class UIFactory {
+    -LibraryService libraryService
+    +getUI()
     }
-    class Fish{
-        -int sizeInFeet
-        -canEat()
+    
+    class UI {
+    <<interface>>
+    +show()
     }
-    class Zebra{
-        +bool is_wild
-        +run()
+    
+    
+    class Command {
+    +execute()
+    +getDescription()
     }
+    
+    class LibraryCLI {
+    -LibraryService libraryService
+    -Scanner scanner
+    -Map<Interger,Command> commands
+    -getChoice()
+    +show()
+    +addCommand()
+    +start()
+    }
+    
+    class LibraryGUI {
+    -LibraryService libraryService
+    -Scanner scanner
+    -Map<Interger,Command> commands
+    +show()
+    -createAndShowGUI()
+    }
+    
+    class AddBookCommand {
+    -LibraryService libraryService
+    -Scanner scanner
+    +execute()
+    +getDescription()
+    }
+    
+    class BorrowBookCommand {
+    -LibraryService libraryService
+    -Scanner scanner
+    +execute()
+    +getDescription()
+    }
+    
+    class ReturnBookCommand {
+    -LibraryService libraryService
+    -Scanner scanner
+    +execute()
+    +getDescription()
+    }
+    
+    class DisplayBooksCommand {
+    -LibraryService libraryService
+    -Scanner scanner
+    +execute()
+    +getDescription()
+    }
+    
+    
+    
+    
+    
+    
+    
+
+
 
 ```
