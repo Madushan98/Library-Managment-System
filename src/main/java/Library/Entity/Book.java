@@ -23,13 +23,12 @@ public class Book {
         this.availability = true;
     }
 
-    public Book(String title, String author,boolean availability) {
+    public Book(String title, String author, boolean availability) {
         this.id = IdGenerator.generateId();
         this.title = title;
         this.author = author;
         this.availability = availability;
     }
-
 
     public int getId() {
         return id;
@@ -55,7 +54,7 @@ public class Book {
         this.author = author;
     }
 
-    public boolean isAvailability() {
+    public boolean getAvailability() {
         return availability;
     }
 
@@ -63,4 +62,3 @@ public class Book {
         this.availability = availability;
     }
 }
-

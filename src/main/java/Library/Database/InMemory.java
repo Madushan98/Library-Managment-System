@@ -36,7 +36,7 @@ public class InMemory implements InMemoryDatabase {
   }
 
   public List<Book> GetAllAvailableBooks() {
-    return books.stream().filter(book -> book.isAvailability()).toList();
+    return books.stream().filter(book -> book.getAvailability()).toList();
   }
 
   public void UpdateBook(Book book) {

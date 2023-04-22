@@ -34,7 +34,7 @@ public class BookManageSqlAdapter extends BaseSqlInitiator implements BookManage
   public void UpdateBook(Book book) {
     database.ExecuteUpdate(
         "UPDATE BOOKS SET TITLE = '%s', AUTHOR = '%s', AVAILABLE = %d WHERE ID = %d"
-            .formatted(book.getTitle(), book.getAuthor(), book.isAvailability() ? 1 : 0,
+            .formatted(book.getTitle(), book.getAuthor(), book.getAvailability() ? 1 : 0,
                 book.getId()));
   }
 

@@ -16,10 +16,11 @@ import java.util.List;
 
 public class LibraryGUI implements UI {
 
-    private final  LibraryService libraryService;
+    private final LibraryService libraryService;
     private JTable table;
     private JFrame frame;
-    public  LibraryGUI(LibraryService libraryService){
+
+    public LibraryGUI(LibraryService libraryService) {
         this.libraryService = libraryService;
     }
 
@@ -87,7 +88,7 @@ public class LibraryGUI implements UI {
         if (result == JOptionPane.OK_OPTION) {
             String title = titleField.getText();
             String author = authorField.getText();
-            libraryService.addBook(title,author);
+            libraryService.addBook(title, author);
             refreshTable();
         }
     }
@@ -97,7 +98,7 @@ public class LibraryGUI implements UI {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
         for (Book book : allBooks) {
-            model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(), book.isAvailability() });
+            model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability() });
         }
     }
 
@@ -110,7 +111,8 @@ public class LibraryGUI implements UI {
         }
         int bookId = (int) table.getValueAt(selectedRow, 0);
         // confirm with the user before removing the book
-        int result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to remove this book?", "Remove Book", JOptionPane.YES_NO_OPTION);
+        int result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to remove this book?", "Remove Book",
+                JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
             libraryService.removeBook(bookId);
             refreshTable();
@@ -170,13 +172,14 @@ public class LibraryGUI implements UI {
 
         List<Book> overdueBooks = libraryService.getOverdueBooks();
 
-//        for (Book book : overdueBooks) {
-//            record = libraryService.getBookRecord()
-//            LocalDate dueDate = book.getDueDate();
-//            String borrowedUser = book.getBorrowedUser();
-//            String borrowedDate = book.getBorrowedDate().toString();
-//            model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(), borrowedUser, borrowedDate, dueDate });
-//        }
+        // for (Book book : overdueBooks) {
+        // record = libraryService.getBookRecord()
+        // LocalDate dueDate = book.getDueDate();
+        // String borrowedUser = book.getBorrowedUser();
+        // String borrowedDate = book.getBorrowedDate().toString();
+        // model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(),
+        // borrowedUser, borrowedDate, dueDate });
+        // }
 
         dialog.add(scrollPane);
         dialog.pack();
