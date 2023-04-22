@@ -4,22 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef605e47-7683-443a-b7fc-c2d6da3b557e" name="Changes" comment="UI Change">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/AddBookCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/BorrowBookCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/DisplayAllBooksCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/DisplayAvailableBooksCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/DisplayBorrowedBooksCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/DisplayMenuCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/DisplayOverdueBooksCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/ExitCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/RemoveBookCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Commands/ReturnBookCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/Interface/Command.java" afterDir="false" />
+    <list default="true" id="ef605e47-7683-443a-b7fc-c2d6da3b557e" name="Changes" comment="change commands get-description to return string">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LMS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UI/CLI/LibraryCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/LibraryCLI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +83,7 @@
       <workItem from="1682033565011" duration="970000" />
       <workItem from="1682077932549" duration="10326000" />
       <workItem from="1682088519176" duration="5642000" />
+      <workItem from="1682154367865" duration="1110000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1681973610002</created>
@@ -133,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682079273211</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="change commands get-description to return string">
+      <created>1682154990673</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1682154990673</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +151,7 @@
     <MESSAGE value="book init" />
     <MESSAGE value="refactor project" />
     <MESSAGE value="UI Change" />
-    <option name="LAST_COMMIT_MESSAGE" value="UI Change" />
+    <MESSAGE value="change commands get-description to return string" />
+    <option name="LAST_COMMIT_MESSAGE" value="change commands get-description to return string" />
   </component>
 </project>

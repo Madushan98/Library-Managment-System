@@ -1,8 +1,8 @@
-package UI.CLI.Commands;
+package UI.CLI.CLICommands;
 
 import Library.Entity.Book;
 import Library.Service.LibraryService;
-import UI.CLI.Interfaces.Command;
+import UI.Interfaces.Command;
 import Utils.StringToDatetime;
 
 import java.time.LocalDate;

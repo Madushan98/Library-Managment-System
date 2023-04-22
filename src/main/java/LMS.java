@@ -4,7 +4,7 @@ import Library.Database.Enums.SupportSqlDB;
 import Library.Database.Interfaces.DataManager;
 import Library.Service.BookLibraryService;
 import Library.Service.LibraryService;
-import UI.UI;
+import UI.Interfaces.UI;
 import UI.UIFactory.UIFactory;
 
 public class LMS {

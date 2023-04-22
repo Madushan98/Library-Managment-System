@@ -1,6 +1,6 @@
-package UI.CLI.Commands;
+package UI.CLI.CLICommands;
 
-import UI.CLI.Interfaces.Command;
+import UI.Interfaces.Command;
 
 public class ExitCommand implements Command {
 

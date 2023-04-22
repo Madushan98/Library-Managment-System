@@ -1,12 +1,12 @@
-package UI.CLI.Commands;
+package UI.CLI.CLICommands;
 
 import Library.Service.LibraryService;
-import UI.CLI.Interfaces.Command;
+import UI.Interfaces.Command;
 
-public class DisplayBorrowedBooksCommand implements Command {
-
+public class DisplayOverdueBooksCommand implements Command {
     private final LibraryService libraryService;
-    public DisplayBorrowedBooksCommand(LibraryService libraryService) {
+
+    public DisplayOverdueBooksCommand(LibraryService libraryService) {
         this.libraryService = libraryService;
     }
 
@@ -17,6 +17,7 @@ public class DisplayBorrowedBooksCommand implements Command {
 
     @Override
     public String getDescription() {
-        return "Display borrowed books";
+        return "Display overdue books";
     }
 }
+

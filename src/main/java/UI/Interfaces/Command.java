@@ -1,4 +1,4 @@
-package UI.CLI.Interfaces;
+package UI.Interfaces;
 
 
 public interface Command {
