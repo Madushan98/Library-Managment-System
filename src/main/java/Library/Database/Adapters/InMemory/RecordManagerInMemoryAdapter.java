@@ -11,8 +11,8 @@ public class RecordManagerInMemoryAdapter extends BaseInMemoryInitiator implemen
     super(name);
   }
 
-  public void CreateBookRecord(BookRecord record) {
-    database.CreateBookRecord(record);
+  public int CreateBookRecord(BookRecord record) {
+    return database.CreateBookRecord(record);
   }
 
   public BookRecord GetBookRecord(int id) {

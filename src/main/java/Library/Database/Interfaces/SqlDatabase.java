@@ -6,7 +6,7 @@ import Library.Entity.Book;
 import Library.Entity.BookRecord;
 
 public interface SqlDatabase {
-  void ExecuteUpdate(String sqlString);
+  int ExecuteUpdate(String sqlString);
 
   List<Book> ExecuteBookQuery(String sqlString);
 

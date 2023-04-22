@@ -20,7 +20,7 @@ public class DisplayAvailableBooksCommand implements Command {
         System.out.format("%-5s %-30s %-20s %-10s\n", "ID", "Title", "Author", "Available");
         for (Book book : allBooks) {
             System.out.format("%-5s %-30s %-20s %-10s\n", book.getId(), book.getTitle(),
-                    book.getAuthor(), book.isAvailability() ? "Yes" : "No");
+                    book.getAuthor(), book.getAvailability() ? "Yes" : "No");
         }
     }
 

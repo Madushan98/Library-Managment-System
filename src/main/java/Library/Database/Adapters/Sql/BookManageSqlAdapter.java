@@ -12,14 +12,13 @@ public class BookManageSqlAdapter extends BaseSqlInitiator implements BookManage
     super(name);
   }
 
-  public void CreateBook(Book book) {
-    database.ExecuteUpdate(
+  public int CreateBook(Book book) {
+    return database.ExecuteUpdate(
         "INSERT INTO BOOKS (TITLE, AUTHOR) VALUES ('%s', '%s')"
             .formatted(book.getTitle(), book.getAuthor()));
   }
 
   public Book GetBook(int id) {
-
     return database.ExecuteBookQuery("SELECT * FROM BOOKS WHERE ID = %d".formatted(id)).get(0);
   }
 
@@ -34,7 +33,7 @@ public class BookManageSqlAdapter extends BaseSqlInitiator implements BookManage
   public void UpdateBook(Book book) {
     database.ExecuteUpdate(
         "UPDATE BOOKS SET TITLE = '%s', AUTHOR = '%s', AVAILABLE = %d WHERE ID = %d"
-            .formatted(book.getTitle(), book.getAuthor(), book.isAvailability() ? 1 : 0,
+            .formatted(book.getTitle(), book.getAuthor(), book.getAvailability() ? 1 : 0,
                 book.getId()));
   }
 

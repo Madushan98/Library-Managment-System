@@ -2,6 +2,9 @@ package Library.Entity;
 
 import java.time.LocalDate;
 
+import Library.Database.Interfaces.BookManager;
+import Library.Database.Interfaces.RecordManager;
+
 public class BookRecord {
     private int id;
     private int bookId;
@@ -17,12 +20,37 @@ public class BookRecord {
         this.user = user;
     }
 
-    public BookRecord(int id, int bookId, String dueDate, boolean returned, String user) {
+    public BookRecord(int id, int bookId, String user, boolean returned, String dueDate) {
         this.id = id;
         this.bookId = bookId;
         this.returned = returned;
         this.user = user;
         this.dueDate = LocalDate.parse(dueDate);
+    }
+
+    public BookRecord(int bookId, String user) {
+        this.id = -1;
+        this.bookId = bookId;
+        this.user = user;
+        this.returned = false;
+        this.dueDate = LocalDate.now().plusDays(14);
+    }
+
+    public BookRecord(Book book, BookManager bookManager, RecordManager recordManager) {
+        if (!book.getAvailability()) {
+            throw new RuntimeException("Book is not available");
+        }
+
+        this.id = -1;
+        this.bookId = book.getId();
+        this.user = "user";
+        this.returned = false;
+        this.dueDate = LocalDate.now().plusDays(14);
+
+        this.id = recordManager.CreateBookRecord(this);
+
+        book.setAvailability(false);
+        book.Save(bookManager);
     }
 
     public int getId() {

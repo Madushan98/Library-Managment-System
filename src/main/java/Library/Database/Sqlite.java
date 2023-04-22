@@ -86,20 +86,30 @@ public class Sqlite implements SqlDatabase {
      * Execute a update query
      * 
      * @param sqlString The query to execute
+     * @return The id of the inserted row
      */
-    public void ExecuteUpdate(String sqlString) {
+    public int ExecuteUpdate(String sqlString) {
         if (conn == null) {
             throw new RuntimeException("Connection is null");
         }
 
         try {
             Statement stmt = conn.createStatement();
-            stmt.executeUpdate(sqlString);
+            stmt.executeUpdate(sqlString, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+
+            // Get the id of the inserted row
+            int id = rs.getInt(1);
             stmt.close();
+
+            return id;
         } catch (Exception e) {
             logger.severe(
                     "Failed to execute query: " + sqlString + ". " + e.getMessage());
         }
+
+        return -1;
     }
 
     public List<Book> ExecuteBookQuery(String sqlString) {

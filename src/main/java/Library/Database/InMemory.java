@@ -23,8 +23,9 @@ public class InMemory implements InMemoryDatabase {
     return instance;
   }
 
-  public void CreateBook(Book book) {
+  public int CreateBook(Book book) {
     books.add(book);
+    return books.size() - 1;
   }
 
   public Book GetBook(int id) {
@@ -36,7 +37,7 @@ public class InMemory implements InMemoryDatabase {
   }
 
   public List<Book> GetAllAvailableBooks() {
-    return books.stream().filter(book -> book.isAvailability()).toList();
+    return books.stream().filter(book -> book.getAvailability()).toList();
   }
 
   public void UpdateBook(Book book) {
@@ -53,8 +54,9 @@ public class InMemory implements InMemoryDatabase {
     return books.stream().filter(book -> book.getTitle().contains(name)).toList();
   }
 
-  public void CreateBookRecord(BookRecord bookRecord) {
+  public int CreateBookRecord(BookRecord bookRecord) {
     bookRecords.add(bookRecord);
+    return bookRecords.size() - 1;
   }
 
   public BookRecord GetBookRecord(int id) {

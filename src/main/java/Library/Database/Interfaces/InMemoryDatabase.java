@@ -6,7 +6,7 @@ import Library.Entity.Book;
 import Library.Entity.BookRecord;
 
 public interface InMemoryDatabase {
-  public void CreateBook(Book book);
+  public int CreateBook(Book book);
 
   public Book GetBook(int id);
 
@@ -20,7 +20,7 @@ public interface InMemoryDatabase {
 
   public List<Book> SearchByName(String name);
 
-  public void CreateBookRecord(BookRecord bookRecord);
+  public int CreateBookRecord(BookRecord bookRecord);
 
   public BookRecord GetBookRecord(int id);
 

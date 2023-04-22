@@ -12,8 +12,8 @@ public class RecordManageSqlAdapter extends BaseSqlInitiator implements RecordMa
   }
 
   @Override
-  public void CreateBookRecord(BookRecord bookRecord) {
-    database.ExecuteUpdate("INSERT INTO RECORDS (BOOK_ID, USER, DUE_DATE) VALUES (%d, '%s', '%s')"
+  public int CreateBookRecord(BookRecord bookRecord) {
+    return database.ExecuteUpdate("INSERT INTO RECORDS (BOOK_ID, USER, DUE_DATE) VALUES (%d, '%s', '%s')"
         .formatted(bookRecord.getBookId(), bookRecord.getUser(), bookRecord.getDueDate().toString()));
 
   }
