@@ -1,7 +1,7 @@
 import Enums.SupportSqlDB;
 import Enums.UIType;
-import Library.Database.Adapters.Sql;
-import Library.Database.Interfaces.DataHandler;
+import Library.Database.Adapters.BookManageSqlAdapter;
+import Library.Database.Interfaces.BookManager;
 import Library.Service.BookLibraryService;
 import Library.Service.LibraryService;
 import UI.UI;
