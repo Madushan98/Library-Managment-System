@@ -21,8 +21,7 @@ public class ReturnBookCommand implements Command {
         }
 
     @Override
-    public void getDescription() {
-        System.out.print("Return a book");
-        System.out.println("");
+    public String getDescription() {
+        return "Return a book";
     }
 }

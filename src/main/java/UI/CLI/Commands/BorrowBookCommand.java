@@ -45,7 +45,7 @@ public class BorrowBookCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Borrow a book");
+    public String getDescription() {
+        return  "Borrow a book";
     }
 }

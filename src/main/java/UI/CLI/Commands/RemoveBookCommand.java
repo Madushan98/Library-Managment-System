@@ -28,8 +28,7 @@ public class RemoveBookCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Remove a book");
-
+    public String getDescription() {
+        return "Remove a book";
     }
 }

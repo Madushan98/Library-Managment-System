@@ -25,7 +25,7 @@ public class DisplayAllBooksCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Display all books");
+    public String getDescription() {
+        return "Display all books";
     }
 }

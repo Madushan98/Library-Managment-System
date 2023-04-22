@@ -17,13 +17,14 @@ public class DisplayMenuCommand implements Command {
         System.out.println("Please choose an option: ");
         for (Integer key : commands.keySet()) {
             System.out.print(key + ". ");
-            commands.get(key).getDescription();
+            System.out.println( commands.get(key).getDescription());
         }
         System.out.println("");
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Display menu");
+    public String getDescription() {
+        return "Display menu";
     }
+
 }

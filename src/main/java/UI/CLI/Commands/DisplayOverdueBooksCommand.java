@@ -16,8 +16,8 @@ public class DisplayOverdueBooksCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Display overdue books");
+    public String getDescription() {
+        return "Display overdue books";
     }
 }
 

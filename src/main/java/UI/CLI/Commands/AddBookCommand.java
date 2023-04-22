@@ -29,8 +29,8 @@ public class AddBookCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Add a new book");
+    public String getDescription() {
+        return  "Add a new book";
     }
 }
 

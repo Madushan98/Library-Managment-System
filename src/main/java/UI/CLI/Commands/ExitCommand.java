@@ -11,7 +11,7 @@ public class ExitCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Exit the library system");
+    public String getDescription() {
+        return "Exit the library system";
     }
 }

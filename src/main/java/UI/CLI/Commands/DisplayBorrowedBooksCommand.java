@@ -16,8 +16,7 @@ public class DisplayBorrowedBooksCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Display borrowed books");
+    public String getDescription() {
+        return "Display borrowed books";
     }
-
 }
