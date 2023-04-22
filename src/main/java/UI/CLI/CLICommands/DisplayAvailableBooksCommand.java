@@ -1,22 +1,22 @@
-package UI.CLI.Commands;
+package UI.CLI.CLICommands;
 
 import Library.Entity.Book;
 import Library.Service.LibraryService;
-import UI.CLI.Interfaces.Command;
+import UI.Interfaces.Command;
 
 import java.util.List;
 
-public class DisplayAllBooksCommand implements Command {
+public class DisplayAvailableBooksCommand implements Command {
 
     private final LibraryService libraryService;
 
-    public DisplayAllBooksCommand(LibraryService libraryService) {
+    public DisplayAvailableBooksCommand(LibraryService libraryService) {
         this.libraryService = libraryService;
     }
 
     @Override
     public void execute() {
-        List<Book> allBooks = libraryService.getAllBooks();
+        List<Book> allBooks = libraryService.getAvailableBooks();
         System.out.format("%-5s %-30s %-20s %-10s\n", "ID", "Title", "Author", "Available");
         for (Book book : allBooks) {
             System.out.format("%-5s %-30s %-20s %-10s\n", book.getId(), book.getTitle(),
@@ -25,7 +25,7 @@ public class DisplayAllBooksCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Display all books");
+    public String getDescription() {
+        return  "Display available books";
     }
 }

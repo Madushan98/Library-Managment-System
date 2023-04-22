@@ -1,4 +1,4 @@
-package UI;
+package UI.Interfaces;
 
 public interface UI {
 

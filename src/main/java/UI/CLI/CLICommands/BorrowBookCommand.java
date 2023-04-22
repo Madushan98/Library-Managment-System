@@ -1,8 +1,8 @@
-package UI.CLI.Commands;
+package UI.CLI.CLICommands;
 
 import Library.Entity.Book;
 import Library.Service.LibraryService;
-import UI.CLI.Interfaces.Command;
+import UI.Interfaces.Command;
 import Utils.StringToDatetime;
 
 import java.time.LocalDate;
@@ -45,7 +45,7 @@ public class BorrowBookCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Borrow a book");
+    public String getDescription() {
+        return  "Borrow a book";
     }
 }

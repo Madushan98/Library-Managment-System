@@ -1,7 +1,7 @@
-package UI.CLI.Commands;
+package UI.CLI.CLICommands;
 
 import Library.Service.LibraryService;
-import UI.CLI.Interfaces.Command;
+import UI.Interfaces.Command;
 
 public class DisplayBorrowedBooksCommand implements Command {
 
@@ -16,8 +16,7 @@ public class DisplayBorrowedBooksCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Display borrowed books");
+    public String getDescription() {
+        return "Display borrowed books";
     }
-
 }
