@@ -31,6 +31,16 @@ public class RecordManageSqlAdapter extends BaseSqlInitiator implements RecordMa
   }
 
   @Override
+  public List<BookRecord> GetBorrowedBooks() {
+    return database.ExecuteBookRecordQuery("SELECT * FROM RECORDS WHERE RETURNED = 0");
+  }
+
+  @Override
+  public List<BookRecord> GetOverdueBooks() {
+    return database.ExecuteBookRecordQuery("SELECT * FROM RECORDS WHERE RETURNED = 0 AND date(DUE_DATE) < NOW()");
+  }
+
+  @Override
   public BookRecord GetBookRecord(int id) {
     return database.ExecuteBookRecordQuery("SELECT * FROM RECORDS WHERE ID = %d".formatted(id)).get(0);
   }

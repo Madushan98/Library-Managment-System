@@ -13,6 +13,10 @@ public interface RecordManager {
 
   public List<BookRecord> GetAllBookRecords();
 
+  public List<BookRecord> GetBorrowedBooks();
+
+  public List<BookRecord> GetOverdueBooks();
+
   public BookRecord UpdateBookRecord(BookRecord bookRecord);
 
   public void DeleteBookRecord(int id);

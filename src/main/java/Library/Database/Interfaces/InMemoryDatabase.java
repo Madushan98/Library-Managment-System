@@ -28,6 +28,10 @@ public interface InMemoryDatabase {
 
   public BookRecord GetLastBookRecordForBook(int bookId);
 
+  public List<BookRecord> GetBorrowedBooks();
+
+  public List<BookRecord> GetOverdueBooks();
+
   public BookRecord UpdateBookRecord(BookRecord bookRecord);
 
   public void DeleteBookRecord(int id);

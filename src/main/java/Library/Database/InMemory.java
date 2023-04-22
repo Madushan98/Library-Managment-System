@@ -1,5 +1,6 @@
 package Library.Database;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,4 +84,17 @@ public class InMemory implements InMemoryDatabase {
   public void DeleteBookRecord(int id) {
     bookRecords.removeIf(bookRecord -> bookRecord.getId() == id);
   }
+
+  @Override
+  public List<BookRecord> GetBorrowedBooks() {
+    return bookRecords.stream().filter(bookRecord -> bookRecord.isReturned() == false).toList();
+  }
+
+  @Override
+  public List<BookRecord> GetOverdueBooks() {
+    return bookRecords.stream()
+        .filter(bookRecord -> bookRecord.isReturned() == false && LocalDate.now().isAfter(bookRecord.getDueDate()))
+        .toList();
+  }
+
 }

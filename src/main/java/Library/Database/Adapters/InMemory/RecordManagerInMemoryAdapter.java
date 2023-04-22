@@ -27,6 +27,14 @@ public class RecordManagerInMemoryAdapter extends BaseInMemoryInitiator implemen
     return database.GetAllBookRecords();
   }
 
+  public List<BookRecord> GetBorrowedBooks() {
+    return database.GetBorrowedBooks();
+  }
+
+  public List<BookRecord> GetOverdueBooks() {
+    return database.GetOverdueBooks();
+  }
+
   public BookRecord UpdateBookRecord(BookRecord record) {
     return database.UpdateBookRecord(record);
   }
