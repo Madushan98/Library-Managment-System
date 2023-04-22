@@ -1,6 +1,6 @@
 package Library.Service;
 
-import Library.Database.Interfaces.DataHandler;
+import Library.Database.Interfaces.BookManager;
 import Library.Entity.Book;
 
 import java.time.LocalDate;
@@ -8,16 +8,15 @@ import java.util.List;
 
 public class BookLibraryService implements LibraryService {
 
-    private final DataHandler dataHandler;
+    private final BookManager dataHandler;
 
-    public BookLibraryService(DataHandler dataHandler) {
+    public BookLibraryService(BookManager dataHandler) {
         this.dataHandler = dataHandler;
     }
 
-
     @Override
     public boolean addBook(String title, String author) {
-        dataHandler.CreateBook(new Book(title,author));
+        dataHandler.CreateBook(new Book(title, author));
         return true;
     }
 
@@ -29,7 +28,7 @@ public class BookLibraryService implements LibraryService {
 
     @Override
     public List<Book> getAllBooks() {
-       return dataHandler.GetAllBooks();
+        return dataHandler.GetAllBooks();
     }
 
     @Override

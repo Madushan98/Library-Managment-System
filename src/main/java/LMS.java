@@ -10,7 +10,7 @@ import UI.UIFactory.UIFactory;
 public class LMS {
 
     public static void main(String[] args) {
-        DataHandler dataHandler = new Sql(SupportSqlDB.SQLITE);
+        BookManager dataHandler = new BookManageSqlAdapter(SupportSqlDB.SQLITE);
 
         LibraryService bookLibraryService = new BookLibraryService(dataHandler);
 
