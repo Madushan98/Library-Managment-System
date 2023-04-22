@@ -1,6 +1,7 @@
 package UI.GUI;
 
 import Library.Entity.Book;
+import Library.Entity.BookRecord;
 import Library.Service.LibraryService;
 import UI.Interfaces.UI;
 
@@ -51,7 +52,7 @@ public class LibraryGUI implements UI {
         // add buttons to control panel
         JPanel controlPanel = new JPanel(new FlowLayout());
         JButton addButton = new JButton("Add Book");
-        addButton.addActionListener(e -> addBookUI());
+        addButton.addActionListener(e -> addBook());
         controlPanel.add(addButton);
         JButton removeButton = new JButton("Remove Book");
         removeButton.addActionListener(e -> removeBook());
@@ -60,7 +61,7 @@ public class LibraryGUI implements UI {
         borrowButton.addActionListener(e -> borrowBook());
         controlPanel.add(borrowButton);
         JButton showOverDueBooksButton = new JButton("Overdue Books");
-        showOverDueBooksButton.addActionListener(e -> showOverdueBooks());
+        showOverDueBooksButton.addActionListener(e -> showOverdueBookRecords());
         controlPanel.add(showOverDueBooksButton);
         JButton refreshButton = new JButton("Refresh");
         refreshButton.addActionListener(e -> refreshTable());
@@ -76,7 +77,7 @@ public class LibraryGUI implements UI {
         refreshTable();
     }
 
-    private void addBookUI() {
+    private void addBook() {
         // create a dialog to input book information
         JTextField titleField = new JTextField();
         JTextField authorField = new JTextField();
@@ -98,7 +99,7 @@ public class LibraryGUI implements UI {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
         for (Book book : allBooks) {
-            model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability() });
+            model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability()});
         }
     }
 
@@ -155,31 +156,24 @@ public class LibraryGUI implements UI {
         }
     }
 
-    private void showOverdueBooks() {
+    private void showOverdueBookRecords() {
         JDialog dialog = new JDialog(frame, "Overdue Books", true);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("ID");
-        model.addColumn("Title");
-        model.addColumn("Author");
+        model.addColumn("Book ID");
         model.addColumn("Borrowed User");
-        model.addColumn("Borrowed Date");
         model.addColumn("Due Date");
 
         JTable table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
 
-        List<Book> overdueBooks = libraryService.getOverdueBooks();
+        List<BookRecord> overdueBooks = libraryService.getOverdueBooks();
 
-        // for (Book book : overdueBooks) {
-        // record = libraryService.getBookRecord()
-        // LocalDate dueDate = book.getDueDate();
-        // String borrowedUser = book.getBorrowedUser();
-        // String borrowedDate = book.getBorrowedDate().toString();
-        // model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(),
-        // borrowedUser, borrowedDate, dueDate });
-        // }
+        for (BookRecord bookRecord : overdueBooks) {
+            model.addRow(new Object[]{bookRecord.getBookId(), bookRecord.getUser(), bookRecord.getDueDate(),
+            });
+        }
 
         dialog.add(scrollPane);
         dialog.pack();

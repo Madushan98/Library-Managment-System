@@ -1,7 +1,11 @@
 package UI.CLI.CLICommands;
 
+import Library.Entity.Book;
+import Library.Entity.BookRecord;
 import Library.Service.LibraryService;
 import UI.Interfaces.Command;
+
+import java.util.List;
 
 public class DisplayBorrowedBooksCommand implements Command {
 
@@ -12,7 +16,13 @@ public class DisplayBorrowedBooksCommand implements Command {
 
     @Override
     public void execute() {
-        // TODO: Implement this method
+        List<BookRecord> borrowBookRecords = libraryService.getBorrowedBooks();
+        System.out.format("%-5s %-30s %-20s %-10s\n", "ID", "Title", "Author", "Overdue Date");
+        for (BookRecord bookRecord : borrowBookRecords) {
+            Book book = libraryService.getBookById(bookRecord.getBookId());
+            System.out.format("%-5s %-30s %-20s %-10s\n", bookRecord.getId(), book.getTitle(),
+                    book.getAuthor(), bookRecord.getDueDate());
+        }
     }
 
     @Override
