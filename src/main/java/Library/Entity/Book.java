@@ -67,6 +67,21 @@ public class Book {
         return bookRecord;
     }
 
+    public Book ReturnBook(BookManager bookManager, RecordManager recordManager) {
+        if (this.availability) {
+            System.out.println("Book is already available");
+            return null;
+        }
+
+        BookRecord bookRecord = recordManager.GetLastBookRecordForBook(this.id);
+
+        bookRecord.UpdateReturnState(recordManager);
+        this.availability = true;
+        this.Save(bookManager);
+
+        return this;
+    }
+
     public int getId() {
         return id;
     }

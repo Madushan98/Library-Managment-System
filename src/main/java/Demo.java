@@ -85,5 +85,10 @@ public class Demo {
     PrintTopic("Getting All Book Records");
     PrintRecordList(recordManager.GetAllBookRecords());
 
+    PrintTopic("Return Borrowed Book");
+    Book bookToBeReturned = new Book(3, bookManager);
+    bookToBeReturned.ReturnBook(bookManager, recordManager);
+    PrintBookList(bookManager.GetAllBooks());
+
   }
 }

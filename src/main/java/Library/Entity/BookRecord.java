@@ -53,6 +53,13 @@ public class BookRecord {
         book.Save(bookManager);
     }
 
+    public BookRecord UpdateReturnState(RecordManager recordManager) {
+        this.returned = true;
+        recordManager.UpdateBookRecord(this);
+
+        return this;
+    }
+
     public int getId() {
         return id;
     }

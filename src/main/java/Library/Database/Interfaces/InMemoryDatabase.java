@@ -26,6 +26,8 @@ public interface InMemoryDatabase {
 
   public List<BookRecord> GetAllBookRecords();
 
+  public BookRecord GetLastBookRecordForBook(int bookId);
+
   public void UpdateBookRecord(BookRecord bookRecord);
 
   public void DeleteBookRecord(int id);

@@ -19,6 +19,10 @@ public class RecordManagerInMemoryAdapter extends BaseInMemoryInitiator implemen
     return database.GetBookRecord(id);
   }
 
+  public BookRecord GetLastBookRecordForBook(int bookId) {
+    return database.GetLastBookRecordForBook(bookId);
+  }
+
   public List<BookRecord> GetAllBookRecords() {
     return database.GetAllBookRecords();
   }

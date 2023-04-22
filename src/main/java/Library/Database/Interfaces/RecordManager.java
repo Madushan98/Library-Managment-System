@@ -9,6 +9,8 @@ public interface RecordManager {
 
   public BookRecord GetBookRecord(int id);
 
+  public BookRecord GetLastBookRecordForBook(int bookId);
+
   public List<BookRecord> GetAllBookRecords();
 
   public void UpdateBookRecord(BookRecord bookRecord);

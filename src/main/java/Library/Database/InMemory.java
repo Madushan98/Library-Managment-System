@@ -67,6 +67,11 @@ public class InMemory implements InMemoryDatabase {
     return bookRecords;
   }
 
+  public BookRecord GetLastBookRecordForBook(int bookId) {
+    return bookRecords.stream().filter(bookRecord -> bookRecord.getBookId() == bookId).reduce((first, second) -> second)
+        .get();
+  }
+
   public void UpdateBookRecord(BookRecord bookRecord) {
     // override the book with the same id
     DeleteBookRecord(bookRecord.getId());

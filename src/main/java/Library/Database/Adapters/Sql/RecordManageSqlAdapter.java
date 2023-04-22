@@ -34,11 +34,19 @@ public class RecordManageSqlAdapter extends BaseSqlInitiator implements RecordMa
   }
 
   @Override
+  public BookRecord GetLastBookRecordForBook(int bookId) {
+    return database.ExecuteBookRecordQuery(
+        "SELECT * FROM RECORDS WHERE BOOK_ID = %d AND RETURNED = 0 ORDER BY CREATED_AT DESC LIMIT 1"
+            .formatted(bookId))
+        .get(0);
+  }
+
+  @Override
   public void UpdateBookRecord(BookRecord bookRecord) {
     database.ExecuteUpdate(
-        "UPDATE RECORDS SET BOOK_ID = %d, USER = '%s', DUE_DATE = '%s' WHERE ID = %d"
+        "UPDATE RECORDS SET BOOK_ID = %d, USER = '%s', DUE_DATE = '%s', RETURNED = %d WHERE ID = %d"
             .formatted(bookRecord.getBookId(), bookRecord.getUser(),
-                bookRecord.getDueDate().toString(), bookRecord.getId()));
+                bookRecord.getDueDate().toString(), bookRecord.isReturned() ? 1 : 0, bookRecord.getId()));
   }
 
 }

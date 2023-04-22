@@ -58,7 +58,8 @@ public class Sqlite implements SqlDatabase {
                     " BOOK_ID   INT     NOT NULL, " +
                     " USER      TEXT    NOT NULL, " +
                     " RETURNED  INT     DEFAULT 0, " +
-                    " DUE_DATE  TEXT    NOT NULL)";
+                    " DUE_DATE  TEXT    NOT NULL, " +
+                    " CREATED_AT TIMESTAMP  DEFAULT CURRENT_TIMESTAMP)";
 
             stmt.executeUpdate(sql);
             stmt.close();
