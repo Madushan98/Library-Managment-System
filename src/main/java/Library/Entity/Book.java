@@ -1,8 +1,5 @@
 package Library.Entity;
 
-import Library.Database.Interfaces.BookManager;
-import Library.Database.Interfaces.RecordManager;
-
 public class Book {
 
     private int id;
@@ -22,64 +19,6 @@ public class Book {
         this.title = title;
         this.author = author;
         this.availability = availability;
-    }
-
-    public Book(int id, BookManager bookManager) {
-        Book book = bookManager.GetBook(id);
-
-        if (book == null) {
-            throw new RuntimeException("Book not found");
-        }
-
-        this.id = book.getId();
-        this.title = book.getTitle();
-        this.author = book.getAuthor();
-        this.availability = book.getAvailability();
-    }
-
-    public Book Delete(BookManager bookManager) {
-        bookManager.DeleteBook(id);
-        this.availability = false;
-        return this;
-    }
-
-    public Book Save(BookManager bookManager) {
-        if (this.id == -1) {
-            this.id = bookManager.CreateBook(this);
-            return this;
-        }
-
-        bookManager.UpdateBook(this);
-        return this;
-    }
-
-    public BookRecord BorrowBook(BookManager bookManager, RecordManager recordManager) {
-        if (!this.availability) {
-            System.out.println("Book is not available");
-            return null;
-        }
-
-        BookRecord bookRecord = new BookRecord(this.id, "user");
-        recordManager.CreateBookRecord(bookRecord);
-        this.availability = false;
-        this.Save(bookManager);
-
-        return bookRecord;
-    }
-
-    public Book ReturnBook(BookManager bookManager, RecordManager recordManager) {
-        if (this.availability) {
-            System.out.println("Book is already available");
-            return null;
-        }
-
-        BookRecord bookRecord = recordManager.GetLastBookRecordForBook(this.id);
-
-        bookRecord.UpdateReturnState(recordManager);
-        this.availability = true;
-        this.Save(bookManager);
-
-        return this;
     }
 
     public int getId() {

@@ -12,10 +12,12 @@ public class RecordManageSqlAdapter extends BaseSqlInitiator implements RecordMa
   }
 
   @Override
-  public int CreateBookRecord(BookRecord bookRecord) {
-    return database.ExecuteUpdate("INSERT INTO RECORDS (BOOK_ID, USER, DUE_DATE) VALUES (%d, '%s', '%s')"
+  public BookRecord CreateBookRecord(BookRecord bookRecord) {
+    int id = database.ExecuteUpdate("INSERT INTO RECORDS (BOOK_ID, USER, DUE_DATE) VALUES (%d, '%s', '%s')"
         .formatted(bookRecord.getBookId(), bookRecord.getUser(), bookRecord.getDueDate().toString()));
 
+    return new BookRecord(id, bookRecord.getBookId(), bookRecord.getUser(), bookRecord.isReturned(),
+        bookRecord.getDueDate().toString());
   }
 
   @Override
@@ -42,11 +44,14 @@ public class RecordManageSqlAdapter extends BaseSqlInitiator implements RecordMa
   }
 
   @Override
-  public void UpdateBookRecord(BookRecord bookRecord) {
-    database.ExecuteUpdate(
+  public BookRecord UpdateBookRecord(BookRecord bookRecord) {
+    int id = database.ExecuteUpdate(
         "UPDATE RECORDS SET BOOK_ID = %d, USER = '%s', DUE_DATE = '%s', RETURNED = %d WHERE ID = %d"
             .formatted(bookRecord.getBookId(), bookRecord.getUser(),
                 bookRecord.getDueDate().toString(), bookRecord.isReturned() ? 1 : 0, bookRecord.getId()));
+
+    return new BookRecord(id, bookRecord.getBookId(), bookRecord.getUser(), bookRecord.isReturned(),
+        bookRecord.getDueDate().toString());
   }
 
 }

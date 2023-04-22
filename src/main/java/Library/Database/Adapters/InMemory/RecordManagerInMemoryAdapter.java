@@ -11,7 +11,7 @@ public class RecordManagerInMemoryAdapter extends BaseInMemoryInitiator implemen
     super(name);
   }
 
-  public int CreateBookRecord(BookRecord record) {
+  public BookRecord CreateBookRecord(BookRecord record) {
     return database.CreateBookRecord(record);
   }
 
@@ -27,8 +27,8 @@ public class RecordManagerInMemoryAdapter extends BaseInMemoryInitiator implemen
     return database.GetAllBookRecords();
   }
 
-  public void UpdateBookRecord(BookRecord record) {
-    database.UpdateBookRecord(record);
+  public BookRecord UpdateBookRecord(BookRecord record) {
+    return database.UpdateBookRecord(record);
   }
 
   public void DeleteBookRecord(int id) {

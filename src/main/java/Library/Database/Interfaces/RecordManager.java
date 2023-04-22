@@ -5,7 +5,7 @@ import java.util.List;
 import Library.Entity.BookRecord;
 
 public interface RecordManager {
-  public int CreateBookRecord(BookRecord bookRecord);
+  public BookRecord CreateBookRecord(BookRecord bookRecord);
 
   public BookRecord GetBookRecord(int id);
 
@@ -13,7 +13,7 @@ public interface RecordManager {
 
   public List<BookRecord> GetAllBookRecords();
 
-  public void UpdateBookRecord(BookRecord bookRecord);
+  public BookRecord UpdateBookRecord(BookRecord bookRecord);
 
   public void DeleteBookRecord(int id);
 }

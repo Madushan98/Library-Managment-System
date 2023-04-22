@@ -23,9 +23,9 @@ public class InMemory implements InMemoryDatabase {
     return instance;
   }
 
-  public int CreateBook(Book book) {
+  public Book CreateBook(Book book) {
     books.add(book);
-    return books.size() - 1;
+    return book;
   }
 
   public Book GetBook(int id) {
@@ -40,10 +40,11 @@ public class InMemory implements InMemoryDatabase {
     return books.stream().filter(book -> book.getAvailability()).toList();
   }
 
-  public void UpdateBook(Book book) {
+  public Book UpdateBook(Book book) {
     // override the book with the same id
     DeleteBook(book.getId());
     books.add(book);
+    return book;
   }
 
   public void DeleteBook(int id) {
@@ -54,9 +55,9 @@ public class InMemory implements InMemoryDatabase {
     return books.stream().filter(book -> book.getTitle().contains(name)).toList();
   }
 
-  public int CreateBookRecord(BookRecord bookRecord) {
+  public BookRecord CreateBookRecord(BookRecord bookRecord) {
     bookRecords.add(bookRecord);
-    return bookRecords.size() - 1;
+    return bookRecord;
   }
 
   public BookRecord GetBookRecord(int id) {
@@ -72,10 +73,11 @@ public class InMemory implements InMemoryDatabase {
         .get();
   }
 
-  public void UpdateBookRecord(BookRecord bookRecord) {
+  public BookRecord UpdateBookRecord(BookRecord bookRecord) {
     // override the book with the same id
     DeleteBookRecord(bookRecord.getId());
     bookRecords.add(bookRecord);
+    return bookRecord;
   }
 
   public void DeleteBookRecord(int id) {

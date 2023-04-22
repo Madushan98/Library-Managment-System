@@ -16,7 +16,7 @@ public class BookLibraryService implements LibraryService {
 
     @Override
     public boolean addBook(String title, String author) {
-        dataHandler.CreateBook(new Book(title, author));
+        dataHandler.SaveBook(new Book(title, author));
         return true;
     }
 
