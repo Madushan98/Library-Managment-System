@@ -63,6 +63,9 @@ public class LibraryGUI implements UI {
         JButton showOverDueBooksButton = new JButton("Overdue Books");
         showOverDueBooksButton.addActionListener(e -> showOverdueBookRecords());
         controlPanel.add(showOverDueBooksButton);
+        JButton searchButton = new JButton("Search by Title");
+        searchButton.addActionListener(e -> searchBookByTitle());
+        controlPanel.add(searchButton);
         JButton refreshButton = new JButton("Refresh");
         refreshButton.addActionListener(e -> refreshTable());
         controlPanel.add(refreshButton);
@@ -180,4 +183,17 @@ public class LibraryGUI implements UI {
         dialog.setLocationRelativeTo(frame);
         dialog.setVisible(true);
     }
+
+    private void searchBookByTitle() {
+        String title = JOptionPane.showInputDialog(frame, "Enter the book title:");
+        if (title != null && !title.isEmpty()) {
+            List<Book> books = libraryService.searchBook(title);
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.setRowCount(0);
+            for (Book book : books) {
+                model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability()});
+            }
+        }
+    }
+    
 }
