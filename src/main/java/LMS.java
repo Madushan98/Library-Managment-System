@@ -1,7 +1,7 @@
-import Enums.SupportSqlDB;
 import Enums.UIType;
-import Library.Database.Adapters.BookManageSqlAdapter;
-import Library.Database.Interfaces.BookManager;
+import Library.Database.Abstract.DataManagerFactory;
+import Library.Database.Enums.SupportSqlDB;
+import Library.Database.Interfaces.DataManager;
 import Library.Service.BookLibraryService;
 import Library.Service.LibraryService;
 import UI.UI;
@@ -10,9 +10,9 @@ import UI.UIFactory.UIFactory;
 public class LMS {
 
     public static void main(String[] args) {
-        BookManager dataHandler = new BookManageSqlAdapter(SupportSqlDB.SQLITE);
+        DataManager dataManager = new DataManagerFactory();
 
-        LibraryService bookLibraryService = new BookLibraryService(dataHandler);
+        LibraryService bookLibraryService = new BookLibraryService(dataManager.GetBookManager(SupportSqlDB.SQLITE));
 
         UIFactory uiFactory = new UIFactory(bookLibraryService);
 

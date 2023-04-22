@@ -1,7 +1,7 @@
-package Library.Database.Adapters;
+package Library.Database.Adapters.Sql;
 
-import Enums.SupportSqlDB;
 import Library.Database.Sqlite;
+import Library.Database.Enums.SupportSqlDB;
 import Library.Database.Interfaces.SqlDatabase;
 
 public class BaseSqlInitiator {
