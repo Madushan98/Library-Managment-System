@@ -14,7 +14,6 @@ public class DisplayMenuCommand implements Command {
 
     @Override
     public void execute() {
-        System.out.println("\n-------------Welcome to the Library Management System.-----------\n");
         System.out.println("Please choose an option: ");
         for (Integer key : commands.keySet()) {
             System.out.print(key + ". ");

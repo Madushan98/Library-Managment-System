@@ -43,6 +43,8 @@ public class LibraryCLI implements UI {
 
     // starts the CLI
     public void start() {
+        System.out.println("\n-------------Welcome to the Library Management System.-----------\n");
+
         Command command = commands.get(9);
         command.execute();
         while (true) {
@@ -54,6 +56,9 @@ public class LibraryCLI implements UI {
                 System.out.println("Invalid choice. Please try again.");
             }
             System.out.println("");
+
+            // show the menu again
+            commands.get(9).execute();
         }
     }
 
