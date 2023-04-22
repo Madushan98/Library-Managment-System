@@ -4,6 +4,8 @@ import Utils.IdGenerator;
 
 public class Book {
 
+    private BookRecord record;
+
     private int id;
     private String title;
     private String author;
@@ -23,13 +25,12 @@ public class Book {
         this.availability = true;
     }
 
-    public Book(String title, String author,boolean availability) {
+    public Book(String title, String author, boolean availability) {
         this.id = IdGenerator.generateId();
         this.title = title;
         this.author = author;
         this.availability = availability;
     }
-
 
     public int getId() {
         return id;
@@ -62,5 +63,12 @@ public class Book {
     public void setAvailability(boolean availability) {
         this.availability = availability;
     }
-}
 
+    public BookRecord getRecord() {
+        return record;
+    }
+
+    public void setRecord(BookRecord record) {
+        this.record = record;
+    }
+}
