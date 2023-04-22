@@ -1,6 +1,7 @@
 package Library.Service;
 
 import Library.Entity.Book;
+import Library.Entity.BookRecord;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,5 +20,9 @@ public interface LibraryService {
 
     List<Book> getBorrowedBooks();
 
-    List<Book> getOverdueBooks();
+    List<BookRecord> getOverdueBooks();
+
+    boolean returnBook(String title);
+
+    List<Book> searchBooks(String title);
 }

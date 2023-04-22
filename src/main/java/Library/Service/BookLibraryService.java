@@ -2,8 +2,10 @@ package Library.Service;
 
 import Library.Database.Interfaces.BookManager;
 import Library.Entity.Book;
+import Library.Entity.BookRecord;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookLibraryService implements LibraryService {
@@ -48,7 +50,17 @@ public class BookLibraryService implements LibraryService {
     }
 
     @Override
-    public List<Book> getOverdueBooks() {
-        return dataHandler.GetAllBooks();
+    public List<BookRecord> getOverdueBooks() {
+        return new ArrayList<BookRecord>();
+    }
+
+    @Override
+    public boolean returnBook(String title) {
+        return false;
+    }
+
+    @Override
+    public List<Book> searchBooks(String title) {
+        return new ArrayList<Book>();
     }
 }

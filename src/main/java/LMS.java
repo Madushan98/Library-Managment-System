@@ -16,7 +16,7 @@ public class LMS {
 
         UIFactory uiFactory = new UIFactory(bookLibraryService);
 
-        UI ui = uiFactory.getUI(UIType.CLI);
+        UI ui = uiFactory.getUI(UIType.GUI);
         ui.show();
     }
 }

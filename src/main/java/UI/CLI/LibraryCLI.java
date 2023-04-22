@@ -37,8 +37,9 @@ public class LibraryCLI implements UI {
         this.commands.put(6, new ReturnBookCommand(libraryService, scanner));
         this.commands.put(7, new DisplayBorrowedBooksCommand(libraryService));
         this.commands.put(8, new DisplayOverdueBooksCommand(libraryService));
-        this.commands.put(9, new DisplayMenuCommand(commands));
-        this.commands.put(10, new ExitCommand());
+        this.commands.put(9, new SearchBookCommand(libraryService,scanner));
+        this.commands.put(10, new DisplayMenuCommand(commands));
+        this.commands.put(11, new ExitCommand());
     }
 
     // starts the CLI
