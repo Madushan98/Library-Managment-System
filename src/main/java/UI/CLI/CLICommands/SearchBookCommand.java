@@ -22,7 +22,7 @@ public class SearchBookCommand implements Command {
     public void execute() {
         System.out.print("Enter the title of the book to search for: ");
         String title = scanner.nextLine();
-        List<Book> searchResults = libraryService.searchBooks(title);
+        List<Book> searchResults = libraryService.searchBook(title);
         if (searchResults.isEmpty()) {
             System.out.println("No books found with the title: " + title);
         } else {

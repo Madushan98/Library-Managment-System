@@ -17,9 +17,10 @@ public class DisplayOverdueBooksCommand implements Command {
     @Override
     public void execute() {
         List<BookRecord> overdueRecords = libraryService.getOverdueBooks();
-        System.out.format("%-5s %-20s\n", "ID", "Due Date");
+        System.out.format("%-5s %-20s %-10s\n", "ID", "Title", "Due Date");
         for (BookRecord bookRecord : overdueRecords) {
-            System.out.format("%-5s %-20s\n", bookRecord.getBookId(), bookRecord.getDueDate());
+            Book book = libraryService.getBookById(bookRecord.getBookId());
+            System.out.format("%-5s %-20s %-10s\n", bookRecord.getBookId(), book.getTitle(), bookRecord.getDueDate());
         }
     }
 

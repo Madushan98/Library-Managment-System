@@ -1,5 +1,6 @@
 package UI.CLI.CLICommands;
 
+import Library.Entity.Book;
 import Library.Service.LibraryService;
 import UI.Interfaces.Command;
 
@@ -17,13 +18,13 @@ public class ReturnBookCommand implements Command {
 
     @Override
     public void execute() {
-        System.out.println("Enter the title of the book you want to return:");
-        String title = scanner.nextLine();
-        boolean bookReturned = libraryService.returnBook(title);
-        if (bookReturned) {
-            System.out.println("The book \"" + title + "\" was returned successfully.");
+        System.out.println("Enter the Id of the book you want to return:");
+        int bookId = Integer.parseInt(scanner.nextLine());
+        Book bookReturned = libraryService.returnBook(bookId);
+        if (bookReturned != null) {
+            System.out.println("The book \"" + bookReturned.getTitle() + "\" was returned successfully.");
         } else {
-            System.out.println("The book \"" + title + "\" could not be returned.");
+            System.out.println("The book with \"" + bookId + "\" could not be returned.");
         }
     }
 

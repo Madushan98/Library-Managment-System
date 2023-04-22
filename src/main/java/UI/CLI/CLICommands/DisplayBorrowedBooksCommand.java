@@ -1,6 +1,7 @@
 package UI.CLI.CLICommands;
 
 import Library.Entity.Book;
+import Library.Entity.BookRecord;
 import Library.Service.LibraryService;
 import UI.Interfaces.Command;
 
@@ -15,11 +16,12 @@ public class DisplayBorrowedBooksCommand implements Command {
 
     @Override
     public void execute() {
-        List<Book> allBooks = libraryService.getBorrowedBooks();
-        System.out.format("%-5s %-30s %-20s %-10s\n", "ID", "Title", "Author", "Available");
-        for (Book book : allBooks) {
-            System.out.format("%-5s %-30s %-20s %-10s\n", book.getId(), book.getTitle(),
-                    book.getAuthor(), book.getAvailability() ? "Yes" : "No");
+        List<BookRecord> borrowBookRecords = libraryService.getBorrowedBooks();
+        System.out.format("%-5s %-30s %-20s %-10s\n", "ID", "Title", "Author", "Overdue Date");
+        for (BookRecord bookRecord : borrowBookRecords) {
+            Book book = libraryService.getBookById(bookRecord.getBookId());
+            System.out.format("%-5s %-30s %-20s %-10s\n", bookRecord.getId(), book.getTitle(),
+                    book.getAuthor(), bookRecord.getDueDate());
         }
     }
 
