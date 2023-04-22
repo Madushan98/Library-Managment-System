@@ -1,6 +1,6 @@
-package UI.CLI.Commands;
+package UI.CLI.CLICommands;
 
-import UI.CLI.Interfaces.Command;
+import UI.Interfaces.Command;
 
 public class ExitCommand implements Command {
 
@@ -11,7 +11,7 @@ public class ExitCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Exit the library system");
+    public String getDescription() {
+        return "Exit the library system";
     }
 }

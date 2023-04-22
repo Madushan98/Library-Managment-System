@@ -1,7 +1,7 @@
-package UI.CLI.Commands;
+package UI.CLI.CLICommands;
 
 import Library.Service.LibraryService;
-import UI.CLI.Interfaces.Command;
+import UI.Interfaces.Command;
 
 import java.util.Scanner;
 
@@ -21,8 +21,7 @@ public class ReturnBookCommand implements Command {
         }
 
     @Override
-    public void getDescription() {
-        System.out.print("Return a book");
-        System.out.println("");
+    public String getDescription() {
+        return "Return a book";
     }
 }

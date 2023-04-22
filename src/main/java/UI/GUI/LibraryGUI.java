@@ -2,7 +2,7 @@ package UI.GUI;
 
 import Library.Entity.Book;
 import Library.Service.LibraryService;
-import UI.UI;
+import UI.Interfaces.UI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

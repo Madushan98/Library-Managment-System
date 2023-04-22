@@ -1,9 +1,9 @@
 package UI.CLI;
 
 import Library.Service.LibraryService;
-import UI.CLI.Commands.*;
-import UI.CLI.Interfaces.Command;
-import UI.UI;
+import UI.CLI.CLICommands.*;
+import UI.Interfaces.Command;
+import UI.Interfaces.UI;
 
 import java.util.HashMap;
 import java.util.Map;

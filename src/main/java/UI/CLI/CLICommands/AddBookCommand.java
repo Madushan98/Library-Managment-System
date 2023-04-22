@@ -1,7 +1,7 @@
-package UI.CLI.Commands;
+package UI.CLI.CLICommands;
 
 import Library.Service.LibraryService;
-import UI.CLI.Interfaces.Command;
+import UI.Interfaces.Command;
 
 import java.util.Scanner;
 
@@ -29,8 +29,8 @@ public class AddBookCommand implements Command {
     }
 
     @Override
-    public void getDescription() {
-        System.out.println("Add a new book");
+    public String getDescription() {
+        return  "Add a new book";
     }
 }
 

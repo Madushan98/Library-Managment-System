@@ -4,7 +4,7 @@ import Enums.UIType;
 import Library.Service.LibraryService;
 import UI.CLI.LibraryCLI;
 import UI.GUI.LibraryGUI;
-import UI.UI;
+import UI.Interfaces.UI;
 
 public class UIFactory {
 
