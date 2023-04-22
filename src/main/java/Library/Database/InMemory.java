@@ -23,8 +23,9 @@ public class InMemory implements InMemoryDatabase {
     return instance;
   }
 
-  public void CreateBook(Book book) {
+  public int CreateBook(Book book) {
     books.add(book);
+    return books.size() - 1;
   }
 
   public Book GetBook(int id) {

@@ -5,7 +5,7 @@ import java.util.List;
 import Library.Entity.Book;
 
 public interface BookManager {
-  public void CreateBook(Book book);
+  public int CreateBook(Book book);
 
   public Book GetBook(int id);
 

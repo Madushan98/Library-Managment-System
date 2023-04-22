@@ -11,8 +11,8 @@ public class BookManagerInMemoryAdapter extends BaseInMemoryInitiator implements
     super(name);
   }
 
-  public void CreateBook(Book book) {
-    database.CreateBook(book);
+  public int CreateBook(Book book) {
+    return database.CreateBook(book);
   }
 
   public Book GetBook(int id) {
