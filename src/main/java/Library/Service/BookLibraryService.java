@@ -6,7 +6,6 @@ import Library.Entity.Book;
 import Library.Entity.BookRecord;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookLibraryService implements LibraryService {
@@ -27,6 +26,11 @@ public class BookLibraryService implements LibraryService {
     }
 
     @Override
+    public Book getBookById(int id) {
+        return bookManager.GetBook(id);
+    }
+
+    @Override
     public Book borrowBook(int bookId, String user, LocalDate date) {
         Book book = bookManager.GetBook(bookId);
         BookRecord record = new BookRecord(book.getId(), user);
@@ -40,6 +44,17 @@ public class BookLibraryService implements LibraryService {
     }
 
     @Override
+    public Book returnBook(int bookId) {
+        Book book = bookManager.GetBook(bookId);
+        BookRecord record = recordManager.GetLastBookRecordForBook(bookId);
+        record.setReturned(true);
+        recordManager.UpdateBookRecord(record);
+        book.setAvailability(true);
+        book = bookManager.UpdateBook(book);
+        return book;
+    }
+
+    @Override
     public List<Book> getAllBooks() {
         return bookManager.GetAllBooks();
     }
@@ -50,29 +65,13 @@ public class BookLibraryService implements LibraryService {
     }
 
     @Override
-    public List<Book> getBorrowedBooks() {
-        List<BookRecord> records = recordManager.GetBorrowedBooks();
-        List<Book> books = new ArrayList<>();
-
-        for (BookRecord record : records) {
-            Book book = bookManager.GetBook(record.getBookId());
-            books.add(book);
-        }
-
-        return books;
+    public List<BookRecord> getBorrowedBooks() {
+        return recordManager.GetBorrowedBooks();
     }
 
     @Override
-    public List<Book> getOverdueBooks() {
-        List<BookRecord> records = recordManager.GetOverdueBooks();
-        List<Book> books = new ArrayList<>();
-
-        for (BookRecord record : records) {
-            Book book = bookManager.GetBook(record.getBookId());
-            books.add(book);
-        }
-
-        return books;
+    public List<BookRecord> getOverdueBooks() {
+        return recordManager.GetOverdueBooks();
     }
 
     @Override
