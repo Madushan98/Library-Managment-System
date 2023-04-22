@@ -1,7 +1,7 @@
 package Library.Database.Adapters.InMemory;
 
-import Enums.SupportInMemoryDB;
 import Library.Database.InMemory;
+import Library.Database.Enums.SupportInMemoryDB;
 import Library.Database.Interfaces.InMemoryDatabase;
 
 public class BaseInMemoryInitiator {

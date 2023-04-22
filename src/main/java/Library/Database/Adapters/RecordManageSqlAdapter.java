@@ -2,7 +2,7 @@ package Library.Database.Adapters;
 
 import java.util.List;
 
-import Enums.SupportSqlDB;
+import Library.Database.Enums.SupportSqlDB;
 import Library.Database.Interfaces.RecordManager;
 import Library.Entity.BookRecord;
 

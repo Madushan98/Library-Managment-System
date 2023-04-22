@@ -2,7 +2,7 @@ package Library.Database.Adapters.InMemory;
 
 import java.util.List;
 
-import Enums.SupportInMemoryDB;
+import Library.Database.Enums.SupportInMemoryDB;
 import Library.Database.Interfaces.BookManager;
 import Library.Entity.Book;
 
