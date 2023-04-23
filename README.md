@@ -8,7 +8,7 @@ The Library Management System offers various features, such as adding and removi
 
 ### UML Diagram
 
-![Library-Management-System](https://user-images.githubusercontent.com/63912619/233788010-9108b36e-4acb-467f-aa42-be34f9e7263f.png)
+![LibraryService](https://user-images.githubusercontent.com/63912619/233804021-eaf423de-cea9-414e-a97d-7eca4e6afaec.png)
 
 ### Team Members
 
