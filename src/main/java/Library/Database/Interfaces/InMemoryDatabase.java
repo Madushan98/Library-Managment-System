@@ -35,4 +35,6 @@ public interface InMemoryDatabase {
   public BookRecord UpdateBookRecord(BookRecord bookRecord);
 
   public void DeleteBookRecord(int id);
+
+  public List<Book> SearchByAuthor(String name);
 }

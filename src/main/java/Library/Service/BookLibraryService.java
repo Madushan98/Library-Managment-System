@@ -1,7 +1,10 @@
 package Library.Service;
 
+import Library.Database.AuthorSearchStrategy;
+import Library.Database.TitleSearchStrategy;
 import Library.Database.Interfaces.BookManager;
 import Library.Database.Interfaces.RecordManager;
+import Library.Database.Interfaces.SearchStrategy;
 import Library.Entity.Book;
 import Library.Entity.BookRecord;
 
@@ -82,9 +85,26 @@ public class BookLibraryService implements LibraryService {
         return true;
     }
 
+    // @Override
+    // public List<Book> searchBook(String title) {
+    // return bookManager.SearchByName(title);
+    // }
+
+    // @Override
+    // public List<Book> search(SearchStrategy strategy, String keyword) {
+    // List<Book> books;
+    // return strategy.search(keyword, books);
+    // }
+
     @Override
-    public List<Book> searchBook(String title) {
-        return bookManager.SearchByName(title);
+    public List<Book> search(TitleSearchStrategy titleSearchStrategy, String keyword) {
+        List<Book> books = bookManager.SearchByName(keyword);
+        return books;
     }
 
+    @Override
+    public List<Book> search(AuthorSearchStrategy authorSearchStrategy, String keyword) {
+        List<Book> books = bookManager.SearchByAuthor(keyword);
+        return books;
+    }
 }

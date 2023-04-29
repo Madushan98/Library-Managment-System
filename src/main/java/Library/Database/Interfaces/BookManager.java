@@ -18,4 +18,8 @@ public interface BookManager {
   public void DeleteBook(int id);
 
   public List<Book> SearchByName(String name);
+
+  public List<Book> SearchByAuthor(String author);
+
+  public List<Book> search(SearchStrategy strategy, String keyword);
 }

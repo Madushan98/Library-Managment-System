@@ -1,5 +1,7 @@
 package Library.Service;
 
+import Library.Database.AuthorSearchStrategy;
+import Library.Database.TitleSearchStrategy;
 import Library.Entity.Book;
 import Library.Entity.BookRecord;
 
@@ -26,5 +28,9 @@ public interface LibraryService {
 
     List<BookRecord> getOverdueBooks();
 
-    List<Book> searchBook(String title);
+    // List<Book> searchBook(String title);
+
+    List<Book> search(TitleSearchStrategy titleSearchStrategy, String string);
+
+    List<Book> search(AuthorSearchStrategy authorSearchStrategy, String string);
 }

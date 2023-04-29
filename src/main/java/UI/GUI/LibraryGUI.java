@@ -1,5 +1,6 @@
 package UI.GUI;
 
+import Library.Database.TitleSearchStrategy;
 import Library.Entity.Book;
 import Library.Entity.BookRecord;
 import Library.Service.LibraryService;
@@ -102,7 +103,7 @@ public class LibraryGUI implements UI {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
         for (Book book : allBooks) {
-            model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability()});
+            model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability() });
         }
     }
 
@@ -174,7 +175,7 @@ public class LibraryGUI implements UI {
         List<BookRecord> overdueBooks = libraryService.getOverdueBooks();
 
         for (BookRecord bookRecord : overdueBooks) {
-            model.addRow(new Object[]{bookRecord.getBookId(), bookRecord.getUser(), bookRecord.getDueDate(),
+            model.addRow(new Object[] { bookRecord.getBookId(), bookRecord.getUser(), bookRecord.getDueDate(),
             });
         }
 
@@ -187,13 +188,13 @@ public class LibraryGUI implements UI {
     private void searchBookByTitle() {
         String title = JOptionPane.showInputDialog(frame, "Enter the book title:");
         if (title != null && !title.isEmpty()) {
-            List<Book> books = libraryService.searchBook(title);
+            List<Book> books = libraryService.search(new TitleSearchStrategy(), title);
             DefaultTableModel model = (DefaultTableModel) table.getModel();
             model.setRowCount(0);
             for (Book book : books) {
-                model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability()});
+                model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability() });
             }
         }
     }
-    
+
 }
