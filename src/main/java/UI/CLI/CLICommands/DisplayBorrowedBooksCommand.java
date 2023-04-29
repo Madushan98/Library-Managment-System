@@ -10,6 +10,7 @@ import java.util.List;
 public class DisplayBorrowedBooksCommand implements Command {
 
     private final LibraryService libraryService;
+
     public DisplayBorrowedBooksCommand(LibraryService libraryService) {
         this.libraryService = libraryService;
     }
@@ -17,11 +18,11 @@ public class DisplayBorrowedBooksCommand implements Command {
     @Override
     public void execute() {
         List<BookRecord> borrowBookRecords = libraryService.getBorrowedBooks();
-        System.out.format("%-5s %-30s %-20s %-10s\n", "ID", "Title", "Author", "Overdue Date");
+        System.out.format("%-5s %-30s %-20s %-10s\n", "ID", "Title", "User", "Overdue Date");
         for (BookRecord bookRecord : borrowBookRecords) {
             Book book = libraryService.getBookById(bookRecord.getBookId());
-            System.out.format("%-5s %-30s %-20s %-10s\n", bookRecord.getId(), book.getTitle(),
-                    book.getAuthor(), bookRecord.getDueDate());
+            System.out.format("%-5s %-30s %-20s %-10s\n", book.getId(), book.getTitle(),
+                    bookRecord.getUser(), bookRecord.getDueDate());
         }
     }
 

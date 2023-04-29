@@ -26,11 +26,11 @@ public class BorrowBookCommand implements Command {
             int bookId = Integer.parseInt(scanner.nextLine());
             System.out.print("Enter the borrowing Username: ");
             String username = scanner.nextLine();
-            System.out.print("Enter the DueDate (yyyy-MM-dd):");
-            String dueDateString = scanner.nextLine();
-            LocalDate dueDate = StringToDatetime.getDate(dueDateString);
+            System.out.print("Enter the borrowed Date (yyyy-MM-dd):");
+            String todayDateString = scanner.nextLine();
+            LocalDate todayDate = StringToDatetime.getDate(todayDateString);
 
-            Book book = libraryService.borrowBook(bookId, username, dueDate);
+            Book book = libraryService.borrowBook(bookId, username, todayDate);
 
             if (book == null) {
                 System.out.println("Book not found or already borrowed");
@@ -46,6 +46,6 @@ public class BorrowBookCommand implements Command {
 
     @Override
     public String getDescription() {
-        return  "Borrow a book";
+        return "Borrow a book";
     }
 }

@@ -27,4 +27,6 @@ public interface LibraryService {
     List<BookRecord> getOverdueBooks();
 
     List<Book> searchBook(String title);
+
+    BookRecord returnBookRecord(int bookId);
 }

@@ -55,6 +55,12 @@ public class BookLibraryService implements LibraryService {
     }
 
     @Override
+    public BookRecord returnBookRecord(int bookId) {
+        BookRecord record = recordManager.GetBookRecord(bookId);
+        return record;
+    }
+
+    @Override
     public List<Book> getAllBooks() {
         return bookManager.GetAllBooks();
     }
@@ -86,5 +92,4 @@ public class BookLibraryService implements LibraryService {
     public List<Book> searchBook(String title) {
         return bookManager.SearchByName(title);
     }
-
 }

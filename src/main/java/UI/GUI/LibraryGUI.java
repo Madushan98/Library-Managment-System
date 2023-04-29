@@ -57,6 +57,9 @@ public class LibraryGUI implements UI {
         JButton removeButton = new JButton("Remove Book");
         removeButton.addActionListener(e -> removeBook());
         controlPanel.add(removeButton);
+        JButton returnButton = new JButton("Return Book");
+        returnButton.addActionListener(e -> returnBook());
+        controlPanel.add(returnButton);
         JButton borrowButton = new JButton("Borrow Book");
         borrowButton.addActionListener(e -> borrowBook());
         controlPanel.add(borrowButton);
@@ -102,7 +105,7 @@ public class LibraryGUI implements UI {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
         for (Book book : allBooks) {
-            model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability()});
+            model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability() });
         }
     }
 
@@ -159,6 +162,42 @@ public class LibraryGUI implements UI {
         }
     }
 
+    private void returnBook() {
+        // System.out.println("The book \"" + bookReturned.getTitle() + "\" was returned
+        // successfully.");
+
+        JTextField userField = new JTextField();
+        JTextField titleField = new JTextField();
+        JSpinner dateField = new JSpinner(new SpinnerDateModel());
+        Object[] inputFields = {
+                "User:", userField,
+                "Book ID:", titleField,
+                "Borrowed Date", dateField
+        };
+        int result = JOptionPane.showConfirmDialog(frame, inputFields, "Return Book", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            JOptionPane.showMessageDialog(frame, "Book is returned successfully!");
+            String returnuser = userField.getText();
+            String value = titleField.getText();
+            int bookId = Integer.parseInt(value);
+            Date borrowDate = ((SpinnerDateModel) dateField.getModel()).getDate();
+            Instant instant = borrowDate.toInstant();
+            ZoneId zoneId = ZoneId.systemDefault();
+            ZonedDateTime zonedDateTime = instant.atZone(zoneId);
+            LocalDate localDate = zonedDateTime.toLocalDate();
+
+            Book bookReturning = libraryService.returnBook(bookId);
+
+            if (bookReturning != null) {
+                JOptionPane.showMessageDialog(frame,
+                        "The book \"" + bookReturning.getTitle() + "\" was returned successfully.");
+                refreshTable();
+            } else {
+                JOptionPane.showMessageDialog(frame, "Overdued");
+            }
+        }
+    }
+
     private void showOverdueBookRecords() {
         JDialog dialog = new JDialog(frame, "Overdue Books", true);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -174,7 +213,7 @@ public class LibraryGUI implements UI {
         List<BookRecord> overdueBooks = libraryService.getOverdueBooks();
 
         for (BookRecord bookRecord : overdueBooks) {
-            model.addRow(new Object[]{bookRecord.getBookId(), bookRecord.getUser(), bookRecord.getDueDate(),
+            model.addRow(new Object[] { bookRecord.getBookId(), bookRecord.getUser(), bookRecord.getDueDate(),
             });
         }
 
@@ -191,9 +230,9 @@ public class LibraryGUI implements UI {
             DefaultTableModel model = (DefaultTableModel) table.getModel();
             model.setRowCount(0);
             for (Book book : books) {
-                model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability()});
+                model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability() });
             }
         }
     }
-    
+
 }
