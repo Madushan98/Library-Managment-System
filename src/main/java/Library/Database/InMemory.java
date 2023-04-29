@@ -10,8 +10,8 @@ import Library.Entity.BookRecord;
 
 public class InMemory implements InMemoryDatabase {
   private static InMemory instance = null;
-  private List<Book> books = new ArrayList<>();
-  private List<BookRecord> bookRecords = new ArrayList<>();
+  private final List<Book> books = new ArrayList<>();
+  private final List<BookRecord> bookRecords = new ArrayList<>();
 
   private InMemory() {
   }

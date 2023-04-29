@@ -4,6 +4,8 @@ import Library.Database.Interfaces.BookManager;
 import Library.Database.Interfaces.RecordManager;
 import Library.Entity.Book;
 import Library.Entity.BookRecord;
+import Library.Service.Helpers.DueDateHandler;
+import Library.Service.Helpers.Interface.IDueDateHandler;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,8 +21,8 @@ public class BookLibraryService implements LibraryService {
     }
 
     @Override
-    public boolean addBook(String title, String author) {
-        Book book = new Book(title, author);
+    public boolean addBook(String title, String author, String genre) {
+        Book book = new Book(title, author, genre);
         book = bookManager.SaveBook(book);
         return book != null;
     }
@@ -34,6 +36,12 @@ public class BookLibraryService implements LibraryService {
     public Book borrowBook(int bookId, String user, LocalDate date) {
         Book book = bookManager.GetBook(bookId);
         BookRecord record = new BookRecord(book.getId(), user);
+
+        IDueDateHandler dueDateHandler = DueDateHandler.getDueDateHandler();
+        int dueDateinDays = dueDateHandler.getNumberOfDaysAllowed(book.getGenre());
+
+        record.setDueDate(date.plusDays(dueDateinDays));
+
         record = recordManager.CreateBookRecord(record);
         if (record != null) {
             book.setAvailability(false);

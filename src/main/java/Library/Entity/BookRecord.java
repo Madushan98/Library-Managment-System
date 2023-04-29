@@ -30,7 +30,6 @@ public class BookRecord {
         this.bookId = bookId;
         this.user = user;
         this.returned = false;
-        this.dueDate = LocalDate.now().plusDays(14);
     }
 
     public int getId() {

@@ -14,10 +14,10 @@ public class BookManageSqlAdapter extends BaseSqlInitiator implements BookManage
 
   public Book SaveBook(Book book) {
     int id = database.ExecuteUpdate(
-        "INSERT INTO BOOKS (TITLE, AUTHOR) VALUES ('%s', '%s')"
-            .formatted(book.getTitle(), book.getAuthor()));
+        "INSERT INTO BOOKS (TITLE, AUTHOR, GENRE) VALUES ('%s', '%s', '%s')"
+            .formatted(book.getTitle(), book.getAuthor(), book.getGenre()));
 
-    return new Book(id, book.getTitle(), book.getAuthor(), book.getAvailability());
+    return new Book(id, book.getTitle(), book.getAuthor(), book.getGenre(), book.getAvailability());
   }
 
   public Book GetBook(int id) {
@@ -34,11 +34,11 @@ public class BookManageSqlAdapter extends BaseSqlInitiator implements BookManage
 
   public Book UpdateBook(Book book) {
     int id = database.ExecuteUpdate(
-        "UPDATE BOOKS SET TITLE = '%s', AUTHOR = '%s', AVAILABLE = %d WHERE ID = %d"
-            .formatted(book.getTitle(), book.getAuthor(), book.getAvailability() ? 1 : 0,
+        "UPDATE BOOKS SET TITLE = '%s', AUTHOR = '%s', GENRE = '%s', AVAILABLE = %d WHERE ID = %d"
+            .formatted(book.getTitle(), book.getAuthor(), book.getGenre(), book.getAvailability() ? 1 : 0,
                 book.getId()));
 
-    return new Book(id, book.getTitle(), book.getAuthor(), book.getAvailability());
+    return new Book(id, book.getTitle(), book.getAuthor(), book.getGenre(), book.getAvailability());
   }
 
   public void DeleteBook(int id) {
