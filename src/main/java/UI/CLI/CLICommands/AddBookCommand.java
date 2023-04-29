@@ -20,7 +20,9 @@ public class AddBookCommand implements Command {
         String title = scanner.nextLine();
         System.out.print("Enter the book author: ");
         String author = scanner.nextLine();
-        boolean isSuccess = libraryService.addBook(title, author);
+        System.out.println("Enter book genre");
+        String genre = scanner.nextLine();
+        boolean isSuccess = libraryService.addBook(title, author, genre);
         if (isSuccess) {
             System.out.println("The book has been added to the library.");
         } else {

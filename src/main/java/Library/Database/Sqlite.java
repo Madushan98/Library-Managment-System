@@ -17,7 +17,7 @@ public class Sqlite implements SqlDatabase {
     private static Sqlite instance = null;
     private static final String DB_NAME = "library.sqlite";
     private static Connection conn = null;
-    private static Logger logger = Logger.getLogger(Sqlite.class.getName());
+    private static final Logger logger = Logger.getLogger(Sqlite.class.getName());
 
     private Sqlite() {
         try {
@@ -38,6 +38,7 @@ public class Sqlite implements SqlDatabase {
                     "(ID        INTEGER PRIMARY KEY AUTOINCREMENT," +
                     " TITLE     TEXT    NOT NULL, " +
                     " AUTHOR    TEXT    NOT NULL, " +
+                    " GENRE     TEXT    NOT NULL, " +
                     " AVAILABLE INT     DEFAULT 1)";
 
             stmt.executeUpdate(sql);
@@ -125,7 +126,7 @@ public class Sqlite implements SqlDatabase {
             ResultSet rs = stmt.executeQuery(sqlString);
 
             while (rs.next()) {
-                books.add(new Book(rs.getInt("ID"), rs.getString("TITLE"), rs.getString("AUTHOR"),
+                books.add(new Book(rs.getInt("ID"), rs.getString("TITLE"), rs.getString("AUTHOR"), rs.getString("GENRE"),
                         rs.getInt("AVAILABLE") == 1));
             }
 

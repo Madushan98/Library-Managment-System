@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface LibraryService {
 
-    boolean addBook(String title, String author);
+    boolean addBook(String title, String author, String genre);
 
     Book getBookById(int id);
 

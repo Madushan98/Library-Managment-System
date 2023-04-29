@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef605e47-7683-443a-b7fc-c2d6da3b557e" name="Changes" comment="change commands get-description to return string">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Library/Database/Adapters/Sql/BookManageSqlAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Library/Database/Adapters/Sql/BookManageSqlAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Library/Database/InMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Library/Database/InMemory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Library/Database/Sqlite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Library/Database/Sqlite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Library/Entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Library/Entity/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Library/Entity/BookFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Library/Entity/BookFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Library/Service/BookLibraryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Library/Service/BookLibraryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Library/Service/LibraryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Library/Service/LibraryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/CLI/CLICommands/AddBookCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/CLI/CLICommands/AddBookCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/GUI/LibraryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/GUI/LibraryGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +55,15 @@
     "Git.Branch.Popup.ShowAllRemotes": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "book-type-sql",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "Settings.Markdown"
+    "settings.editor.selected.configurable": "terminal",
+    "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -59,7 +76,14 @@
       <recent name="UI.UIFactory" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.LMS">
+    <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Demo" />
+      <module name="Library-management-system" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LMS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="LMS" />
       <module name="Library-management-system" />
@@ -70,6 +94,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.LMS" />
+        <item itemvalue="Application.Demo" />
       </list>
     </recent_temporary>
   </component>
@@ -88,6 +113,9 @@
       <workItem from="1682077932549" duration="10326000" />
       <workItem from="1682088519176" duration="5642000" />
       <workItem from="1682154367865" duration="1110000" />
+      <workItem from="1682775483894" duration="2703000" />
+      <workItem from="1682779626888" duration="2000" />
+      <workItem from="1682785675047" duration="2273000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1681973610002</created>

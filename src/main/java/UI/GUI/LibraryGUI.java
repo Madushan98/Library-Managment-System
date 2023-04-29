@@ -40,6 +40,7 @@ public class LibraryGUI implements UI {
         model.addColumn("ID");
         model.addColumn("Title");
         model.addColumn("Author");
+        model.addColumn("Genre");
         model.addColumn("Available");
 
         // create table
@@ -84,15 +85,18 @@ public class LibraryGUI implements UI {
         // create a dialog to input book information
         JTextField titleField = new JTextField();
         JTextField authorField = new JTextField();
+        JTextField genreField = new JTextField();
         Object[] inputFields = {
                 "Title:", titleField,
-                "Author:", authorField
+                "Author:", authorField,
+                "Genre:", genreField
         };
         int result = JOptionPane.showConfirmDialog(frame, inputFields, "Add Book", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             String title = titleField.getText();
             String author = authorField.getText();
-            libraryService.addBook(title, author);
+            String genre = genreField.getText();
+            libraryService.addBook(title, author, genre);
             refreshTable();
         }
     }
@@ -102,7 +106,7 @@ public class LibraryGUI implements UI {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
         for (Book book : allBooks) {
-            model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability()});
+            model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getGenre(), book.getAvailability()});
         }
     }
 

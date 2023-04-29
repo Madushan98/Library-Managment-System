@@ -19,8 +19,8 @@ public class BookLibraryService implements LibraryService {
     }
 
     @Override
-    public boolean addBook(String title, String author) {
-        Book book = new Book(title, author);
+    public boolean addBook(String title, String author, String genre) {
+        Book book = new Book(title, author, genre);
         book = bookManager.SaveBook(book);
         return book != null;
     }

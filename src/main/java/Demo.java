@@ -39,21 +39,20 @@ public class Demo {
     RecordManager recordManager = dataManager.GetRecordManager(SupportSqlDB.SQLITE);
 
     PrintTopic("Creating Books");
-    Book lotr = new Book("The Lord of the Rings", "J. R. R. Tolkien");
-    Book hp1 = new Book("Harry Potter and the Philosopher Stone", "J. K. Rowling");
-    Book lp = new Book("The Little Prince", "Antoine de Saint-Exupéry");
-    Book atwn = new Book("And Then There Were None", "Agatha Christie");
-    Book dvc = new Book("The Da Vinci Code", "Dan Brown");
-    Book ta = new Book("The Alchemist", "Paulo Coelho");
-    Book drc = new Book("Dream of the Red Chamber", "Cao Xueqin");
 
-    bookManager.SaveBook(lotr);
-    bookManager.SaveBook(hp1);
-    bookManager.SaveBook(lp);
-    bookManager.SaveBook(atwn);
-    bookManager.SaveBook(dvc);
-    bookManager.SaveBook(ta);
-    bookManager.SaveBook(drc);
+    Book book1 = new Book("The Lord of the Rings", "J. R. R. Tolkien", "Fantasy");
+    Book book2 = new Book("Rich Dad Poor Dad", "Robert Kiyosaki", "Finance");
+    Book book3 = new Book("And then there were none", "Agatha Christie", "Mystery");
+    Book book4 = new Book("The gay science", "Friedrich Nietzsche", "Philosophy");
+    Book book5 = new Book("Harry Potter and the Philosopher Stone", "J. K. Rowling", "Fantasy");
+    Book book6 = new Book("Metamorphosis", "Franz Kafka", "Fiction");
+
+    bookManager.SaveBook(book1);
+    bookManager.SaveBook(book2);
+    bookManager.SaveBook(book3);
+    bookManager.SaveBook(book4);
+    bookManager.SaveBook(book5);
+    bookManager.SaveBook(book6);
 
     PrintTopic("Getting All Books");
     PrintBookList(bookManager.GetAllBooks());
