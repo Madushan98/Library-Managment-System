@@ -4,6 +4,7 @@ import java.util.List;
 
 import Library.Database.Enums.SupportSqlDB;
 import Library.Database.Interfaces.BookManager;
+import Library.Database.Interfaces.SearchStrategy;
 import Library.Entity.Book;
 
 public class BookManageSqlAdapter extends BaseSqlInitiator implements BookManager {
@@ -47,5 +48,15 @@ public class BookManageSqlAdapter extends BaseSqlInitiator implements BookManage
 
   public List<Book> SearchByName(String name) {
     return database.ExecuteBookQuery("SELECT * FROM BOOKS WHERE TITLE LIKE '%%%s%%'".formatted(name));
+  }
+
+  public List<Book> SearchByAuthor(String author) {
+    return database.ExecuteBookQuery("SELECT * FROM BOOKS WHERE TITLE LIKE '%%%s%%'".formatted(author));
+  }
+
+  @Override
+  public List<Book> search(SearchStrategy strategy, String keyword) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'search'");
   }
 }

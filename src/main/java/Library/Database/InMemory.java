@@ -97,4 +97,10 @@ public class InMemory implements InMemoryDatabase {
         .toList();
   }
 
+  @Override
+  public List<Book> SearchByAuthor(String name) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'SearchByAuthor'");
+  }
+
 }
