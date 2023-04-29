@@ -37,7 +37,7 @@ public class RecordManageSqlAdapter extends BaseSqlInitiator implements RecordMa
 
   @Override
   public List<BookRecord> GetOverdueBooks() {
-    return database.ExecuteBookRecordQuery("SELECT * FROM RECORDS WHERE RETURNED = 0 AND date(DUE_DATE) < NOW()");
+    return database.ExecuteBookRecordQuery("SELECT * FROM RECORDS WHERE RETURNED = 0 AND date(DUE_DATE) < date('now')");
   }
 
   @Override
