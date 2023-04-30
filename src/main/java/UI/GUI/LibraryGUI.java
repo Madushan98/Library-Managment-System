@@ -136,7 +136,7 @@ public class LibraryGUI implements UI {
         }
         int bookId = (int) table.getValueAt(selectedRow, 0);
 
-         boolean isAvailable = (boolean) table.getValueAt(selectedRow, 4);
+        boolean isAvailable = (boolean) table.getValueAt(selectedRow, 4);
         if (!isAvailable) {
             JOptionPane.showMessageDialog(frame, "Sorry, this book is not available.");
             return;
