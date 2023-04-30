@@ -16,7 +16,7 @@ public interface LibraryService {
 
     List<Book> getAllBooks();
 
-    Book borrowBook(int bookId, String user, LocalDate date);
+    BookRecord borrowBook(int bookId, String user, LocalDate date);
 
     Book returnBook(int bookId);
 

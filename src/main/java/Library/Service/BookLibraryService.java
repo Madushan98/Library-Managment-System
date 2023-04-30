@@ -33,12 +33,14 @@ public class BookLibraryService implements LibraryService {
     }
 
     @Override
-    public Book borrowBook(int bookId, String user, LocalDate date) {
+    public BookRecord borrowBook(int bookId, String user, LocalDate date) {
         Book book = bookManager.GetBook(bookId);
         BookRecord record = new BookRecord(book.getId(), user);
 
         IDueDateHandler dueDateHandler = DueDateHandler.getDueDateHandler();
         int dueDateinDays = dueDateHandler.getNumberOfDaysAllowed(book.getGenre());
+
+        System.out.println("Due date is in " + dueDateinDays + " days");
 
         record.setDueDate(date.plusDays(dueDateinDays));
 
@@ -46,7 +48,7 @@ public class BookLibraryService implements LibraryService {
         if (record != null) {
             book.setAvailability(false);
             bookManager.UpdateBook(book);
-            return book;
+            return record;
         }
         return null;
     }

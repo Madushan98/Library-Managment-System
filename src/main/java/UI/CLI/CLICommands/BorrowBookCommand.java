@@ -1,6 +1,6 @@
 package UI.CLI.CLICommands;
 
-import Library.Entity.Book;
+import Library.Entity.BookRecord;
 import Library.Service.LibraryService;
 import UI.Interfaces.Command;
 import Utils.StringToDatetime;
@@ -30,12 +30,12 @@ public class BorrowBookCommand implements Command {
             String dueDateString = scanner.nextLine();
             LocalDate dueDate = StringToDatetime.getDate(dueDateString);
 
-            Book book = libraryService.borrowBook(bookId, username, dueDate);
+            BookRecord bookRecord = libraryService.borrowBook(bookId, username, dueDate);
 
-            if (book == null) {
+            if (bookRecord == null) {
                 System.out.println("Book not found or already borrowed");
             } else {
-                System.out.println("Book borrowed successfully: " + book.getTitle());
+                System.out.println("Book borrowed successfully");
             }
         } catch (NumberFormatException e) {
             System.out.println("Invalid book ID");
@@ -46,6 +46,6 @@ public class BorrowBookCommand implements Command {
 
     @Override
     public String getDescription() {
-        return  "Borrow a book";
+        return "Borrow a book";
     }
 }

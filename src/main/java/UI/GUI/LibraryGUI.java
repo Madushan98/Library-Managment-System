@@ -106,7 +106,8 @@ public class LibraryGUI implements UI {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
         for (Book book : allBooks) {
-            model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getGenre(), book.getAvailability()});
+            model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(), book.getGenre(),
+                    book.getAvailability() });
         }
     }
 
@@ -152,10 +153,11 @@ public class LibraryGUI implements UI {
             LocalDate localDate = zonedDateTime.toLocalDate();
 
             // borrow the book
-            Book bookBorrowed = libraryService.borrowBook(bookId, borrower, localDate);
+            BookRecord bookRecord = libraryService.borrowBook(bookId, borrower, localDate);
 
-            if (bookBorrowed != null) {
-                JOptionPane.showMessageDialog(frame, "Book borrowed successfully!");
+            if (bookRecord != null) {
+                JOptionPane.showMessageDialog(frame, "Book borrowed successfully! Due date is " +
+                        bookRecord.getDueDate());
                 refreshTable();
             } else {
                 JOptionPane.showMessageDialog(frame, "Sorry, this book is not available for borrowing.");
@@ -178,7 +180,7 @@ public class LibraryGUI implements UI {
         List<BookRecord> overdueBooks = libraryService.getOverdueBooks();
 
         for (BookRecord bookRecord : overdueBooks) {
-            model.addRow(new Object[]{bookRecord.getBookId(), bookRecord.getUser(), bookRecord.getDueDate(),
+            model.addRow(new Object[] { bookRecord.getBookId(), bookRecord.getUser(), bookRecord.getDueDate(),
             });
         }
 
@@ -195,9 +197,9 @@ public class LibraryGUI implements UI {
             DefaultTableModel model = (DefaultTableModel) table.getModel();
             model.setRowCount(0);
             for (Book book : books) {
-                model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability()});
+                model.addRow(new Object[] { book.getId(), book.getTitle(), book.getAuthor(), book.getAvailability() });
             }
         }
     }
-    
+
 }
