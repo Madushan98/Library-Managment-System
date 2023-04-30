@@ -135,6 +135,13 @@ public class LibraryGUI implements UI {
             return;
         }
         int bookId = (int) table.getValueAt(selectedRow, 0);
+
+         boolean isAvailable = (boolean) table.getValueAt(selectedRow, 4);
+        if (!isAvailable) {
+            JOptionPane.showMessageDialog(frame, "Sorry, this book is not available.");
+            return;
+        }
+        
         JTextField userField = new JTextField();
         JSpinner dateField = new JSpinner(new SpinnerDateModel());
         Object[] inputFields = {
